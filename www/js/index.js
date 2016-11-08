@@ -10,6 +10,7 @@ var googleapi = {
             response_type: 'code',
             scope: options.scope
         });
+        alert(authUrl);
         //Open the OAuth consent page in the InAppBrowser
         var authWindow = window.open(authUrl, '_blank', 'location=no,toolbar=no');
         //The recommendation is to use the redirect_uri "urn:ietf:wg:oauth:2.0:oob"
@@ -21,7 +22,8 @@ var googleapi = {
         //loadstart and loadstop events. So if we bind the loadstart event, we can
         //find the authorization code and close the InAppBrowser after the user
         //has granted us access to their data.
-        $(authWindow).on('loadstart', function(e) {
+        $(authWindow).on('loadstart', function (e) {
+            alert('loadstart');
             var url = e.originalEvent.url;
             alert(url);
             var code = /\?code=(.+)$/.exec(url);
