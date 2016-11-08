@@ -39,13 +39,9 @@ var googleapi = {
                     redirect_uri: options.redirect_uri,
                     grant_type: 'authorization_code'
                 }).done(function (data) {
-                    alert(data);
                     deferred.resolve(data);
                 }).fail(function (xhr, status, error) {
-                    alert(xhr.status);
-                    alert(status);
-                    alert(error);
-                    deferred.reject(response.responseJSON);
+                    deferred.reject(xhr);
                 });
             } else if (error) {
                 //The user denied access to the app
