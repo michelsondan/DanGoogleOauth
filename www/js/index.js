@@ -30,6 +30,7 @@ var googleapi = {
             }
 
             if (code) {
+                alert(url);
                 alert(code);
                 alert(code[1]);
                 //Exchange the authorization code for an access token
