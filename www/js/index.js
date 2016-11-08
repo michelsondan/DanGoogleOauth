@@ -40,6 +40,7 @@ var googleapi = {
                     grant_type: 'authorization_code'
                 }).done(function (data) {
                     alert(data.access_token);
+                    alert(gapi);
                     deferred.resolve(data);
                 }).fail(function (xhr, status, error) {
                     deferred.reject(xhr);
@@ -73,3 +74,8 @@ $(document).on('deviceready', function () {
         });
     });
 });
+
+function driveloaded() {
+    alert('drive loaded');
+    alert(gapi);
+}
