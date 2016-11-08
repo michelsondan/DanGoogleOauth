@@ -58,6 +58,43 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Web.config" />
+    <Content Include="www\config.xml" />
+    <Content Include="www\css\index.css" />
+    <Content Include="www\img\logo.png" />
+    <Content Include="www\index.html" />
+    <Content Include="www\js\index.js" />
+    <Content Include="www\js\jquery-1.10.1.min.js" />
+    <Content Include="www\res\icon\android\icon-36-ldpi.png" />
+    <Content Include="www\res\icon\android\icon-48-mdpi.png" />
+    <Content Include="www\res\icon\android\icon-72-hdpi.png" />
+    <Content Include="www\res\icon\android\icon-96-xhdpi.png" />
+    <Content Include="www\res\icon\blackberry\icon-80.png" />
+    <Content Include="www\res\icon\ios\icon-57-2x.png" />
+    <Content Include="www\res\icon\ios\icon-57.png" />
+    <Content Include="www\res\icon\ios\icon-72-2x.png" />
+    <Content Include="www\res\icon\ios\icon-72.png" />
+    <Content Include="www\res\icon\windows-phone\icon-173-tile.png" />
+    <Content Include="www\res\icon\windows-phone\icon-48.png" />
+    <Content Include="www\res\icon\windows-phone\icon-62-tile.png" />
+    <Content Include="www\res\screen\android\screen-hdpi-landscape.png" />
+    <Content Include="www\res\screen\android\screen-hdpi-portrait.png" />
+    <Content Include="www\res\screen\android\screen-ldpi-landscape.png" />
+    <Content Include="www\res\screen\android\screen-ldpi-portrait.png" />
+    <Content Include="www\res\screen\android\screen-mdpi-landscape.png" />
+    <Content Include="www\res\screen\android\screen-mdpi-portrait.png" />
+    <Content Include="www\res\screen\android\screen-xhdpi-landscape.png" />
+    <Content Include="www\res\screen\android\screen-xhdpi-portrait.png" />
+    <Content Include="www\res\screen\blackberry\screen-225.png" />
+    <Content Include="www\res\screen\ios\screen-ipad-landscape-2x.png" />
+    <Content Include="www\res\screen\ios\screen-ipad-landscape.png" />
+    <Content Include="www\res\screen\ios\screen-ipad-portrait-2x.png" />
+    <Content Include="www\res\screen\ios\screen-ipad-portrait.png" />
+    <Content Include="www\res\screen\ios\screen-iphone-landscape-2x.png" />
+    <Content Include="www\res\screen\ios\screen-iphone-landscape.png" />
+    <Content Include="www\res\screen\ios\screen-iphone-portrait-2x.png" />
+    <Content Include="www\res\screen\ios\screen-iphone-portrait-568h-2x.png" />
+    <Content Include="www\res\screen\ios\screen-iphone-portrait.png" />
+    <Content Include="www\res\screen\windows-phone\screen-portrait.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
