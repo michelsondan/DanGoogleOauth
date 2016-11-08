@@ -10,10 +10,9 @@ var googleapi = {
             response_type: 'code',
             scope: options.scope
         });
-        alert('1');
         //Open the OAuth consent page in the InAppBrowser
         var authWindow = window.open(authUrl, '_blank', 'location=no,toolbar=no');
-        alert('2');
+        alert(authWindow);
         //The recommendation is to use the redirect_uri "urn:ietf:wg:oauth:2.0:oob"
         //which sets the authorization code in the browser's title. However, we can't
         //access the title of the InAppBrowser.
@@ -59,7 +58,6 @@ var googleapi = {
 };
 
 $(document).on('deviceready', function () {
-    alert('deviceready');
     var $loginButton = $('#login a');
     var $loginStatus = $('#login p');
 
