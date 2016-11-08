@@ -28,6 +28,7 @@ var googleapi = {
                 //Always close the browser when match is found
                 authWindow.close();
             }
+            alert(url);
 
             if (code) {
                 alert(code);
