@@ -34,9 +34,10 @@ var googleapi = {
                 alert(code);
                 alert(code[1]);
                 //Exchange the authorization code for an access token
-                $.post('https://accounts.google.com/o/oauth2/token', {
+                //$.post('https://accounts.google.com/o/oauth2/token', {
+                $.post('http://webtiv.co.il', {
                     code: code[1],
-                    client_id: options.client_id + '1',
+                    client_id: options.client_id,
                     client_secret: options.client_secret,
                     redirect_uri: options.redirect_uri,
                     grant_type: 'authorization_code'
