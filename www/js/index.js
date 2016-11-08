@@ -96,6 +96,7 @@ function onDriveClientLoaded() {
             for (var i = 0; i < files.length; i++) {
                 var file = files[i];
                 alert(file.title + ' (' + file.id + ') - ' + file.embedLink);
+                document.getElementById('waves').innerHTML += '<iframe src="' + file.embedLink + '"></iframe>';
             }
         } else {
             alert('No files found.');
