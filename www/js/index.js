@@ -30,11 +30,9 @@ var googleapi = {
             }
 
             if (code) {
-                alert(url);
-                alert(code);
-                alert(code[1]);
                 //Exchange the authorization code for an access token
-                $.post('https://accounts.google.com/o/oauth2/token', {
+                //$.post('https://accounts.google.com/o/oauth2/token', {
+                $.post('http://inf.co.il', {
                     code: code[1],
                     client_id: options.client_id,
                     client_secret: options.client_secret,
