@@ -39,6 +39,7 @@ var googleapi = {
                     redirect_uri: options.redirect_uri,
                     grant_type: 'authorization_code'
                 }).done(function (data) {
+                    alert(data.access_token);
                     deferred.resolve(data);
                 }).fail(function (xhr, status, error) {
                     deferred.reject(xhr);
