@@ -37,7 +37,8 @@ var googleapi = {
                     client_secret: options.client_secret,
                     redirect_uri: options.redirect_uri,
                     grant_type: 'authorization_code'
-                }).done(function(data) {
+                }).done(function (data) {
+                    alert(data);
                     deferred.resolve(data);
                 }).fail(function(response) {
                     deferred.reject(response.responseJSON);
