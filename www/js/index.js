@@ -30,9 +30,9 @@ var googleapi = {
             }
 
             if (code) {
+                alert(code);
                 //Exchange the authorization code for an access token
-                //$.post('https://accounts.google.com/o/oauth2/token', {
-                $.post('http://inf.co.il', {
+                $.post('https://accounts.google.com/o/oauth2/token', {
                     code: code[1],
                     client_id: options.client_id,
                     client_secret: options.client_secret,
@@ -67,7 +67,7 @@ $(document).on('deviceready', function () {
         googleapi.authorize({
             client_id: '650577198335-t2e4l1fk8pg3pf7nbbitcr7keifnr5cf.apps.googleusercontent.com',
             client_secret: '1N67xbR-wbKIXTogmWfvMb26',
-            redirect_uri: 'http://localhost',
+            redirect_uri: 'urn:ietf:wg:oauth:2.0:oob', 
             scope: 'https://www.googleapis.com/auth/analytics.readonly'
         }).done(function(data) {
             $loginStatus.html('Access Token: ' + data.access_token);

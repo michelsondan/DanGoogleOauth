@@ -18,7 +18,7 @@
         //    alert(error);
         //});
 
-        $.post('http://inf.co.il', {
+        $.post('http://www.homely.co.il', {
             code: '0',
             client_id: '1',
             client_secret: '2',
@@ -26,13 +26,11 @@
             grant_type: 'authorization_code'
         }).done(function (data) {
             alert(data);
-            deferred.resolve(data);
         }).fail(function (xhr, status, error) {
             alert(xhr);
             alert(xhr.status);
             alert(status);
             alert(error);
-            deferred.reject(response.responseJSON);
         });
 
     </script>
