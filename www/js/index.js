@@ -30,7 +30,7 @@ var googleapi = {
             }
 
             if (code) {
-                alert(code);
+                alert(code[1]);
                 //Exchange the authorization code for an access token
                 $.post('https://accounts.google.com/o/oauth2/token', {
                     code: code[1],
@@ -42,7 +42,7 @@ var googleapi = {
                     alert(data);
                     deferred.resolve(data);
                 }).fail(function (response) {
-                    alert(response);
+                    alert(response[0]);
                     deferred.reject(response.responseJSON);
                 });
             } else if (error) {
