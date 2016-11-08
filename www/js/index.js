@@ -43,8 +43,10 @@ var googleapi = {
                 }).done(function (data) {
                     alert(data);
                     deferred.resolve(data);
-                }).fail(function (response) {
-                    alert(response.responseText);
+                }).fail(function (xhr, status, error) {
+                    alert(xhr);
+                    alert(status);
+                    alert(error);
                     deferred.reject(response.responseJSON);
                 });
             } else if (error) {
