@@ -1,6 +1,5 @@
 var googleapi = {
     authorize: function (options) {
-        alert('start');
         var deferred = $.Deferred();
 
         //Build the OAuth consent page URL
@@ -22,21 +21,15 @@ var googleapi = {
         //find the authorization code and close the InAppBrowser after the user
         //has granted us access to their data.
         $(authWindow).on('loadstart', function (e) {
-            alert('loadstart');
             var url = e.originalEvent.url;
-            alert(url);
             var code = /\?code=(.+)$/.exec(url);
-            alert(code);
             var error = /\?error=(.+)$/.exec(url);
-            alert(error);
             if (code || error) {
                 //Always close the browser when match is found
                 authWindow.close();
-                alert('close');
             }
 
             if (code) {
-                alert('post');
                 //Exchange the authorization code for an access token
                 $.post('https://accounts.google.com/o/oauth2/token', {
                     code: code[1],
