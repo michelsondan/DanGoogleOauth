@@ -1,5 +1,6 @@
 var googleapi = {
-    authorize: function(options) {
+    authorize: function (options) {
+        alert('start');
         var deferred = $.Deferred();
 
         //Build the OAuth consent page URL
@@ -9,10 +10,10 @@ var googleapi = {
             response_type: 'code',
             scope: options.scope
         });
-
+        alert('1');
         //Open the OAuth consent page in the InAppBrowser
         var authWindow = window.open(authUrl, '_blank', 'location=no,toolbar=no');
-
+        alert('2');
         //The recommendation is to use the redirect_uri "urn:ietf:wg:oauth:2.0:oob"
         //which sets the authorization code in the browser's title. However, we can't
         //access the title of the InAppBrowser.
