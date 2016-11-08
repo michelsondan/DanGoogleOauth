@@ -58,7 +58,8 @@ var googleapi = {
     }
 };
 
-$(document).on('deviceready', function() {
+$(document).on('deviceready', function () {
+    alert('deviceready');
     var $loginButton = $('#login a');
     var $loginStatus = $('#login p');
 
