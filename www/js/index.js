@@ -7,7 +7,7 @@ var googleapi = {
             client_id: options.client_id,
             redirect_uri: options.redirect_uri,
             response_type: 'code',
-            scope: options.scope
+            scope: options.scopes.join(' ')
         });        
         //Open the OAuth consent page in the InAppBrowser
         var authWindow = window.open(authUrl, '_blank', 'location=no,toolbar=no');
@@ -72,7 +72,7 @@ $(document).on('deviceready', function () {
             client_id: '650577198335-t2e4l1fk8pg3pf7nbbitcr7keifnr5cf.apps.googleusercontent.com',
             client_secret: '1N67xbR-wbKIXTogmWfvMb26',
             redirect_uri: 'http://localhost',
-            scope: 'https://www.googleapis.com/auth/analytics.readonly,https://www.googleapis.com/auth/drive.metadata.readonly'
+            scopes: ['https://www.googleapis.com/auth/analytics.readonly','https://www.googleapis.com/auth/drive.metadata.readonly']
         }).done(function(data) {
             $loginStatus.html('Access Token: ' + data.access_token);
         }).fail(function(data) {
