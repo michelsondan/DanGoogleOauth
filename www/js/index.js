@@ -42,7 +42,7 @@ var googleapi = {
                     alert(data);
                     deferred.resolve(data);
                 }).fail(function (response) {
-                    alert('error');
+                    alert(response.responseJSON);
                     deferred.reject(response.responseJSON);
                 });
             } else if (error) {
