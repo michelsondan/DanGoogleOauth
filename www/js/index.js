@@ -45,6 +45,8 @@ var googleapi = {
 
                     gapi.client.load('drive', 'v2', onDriveClientLoaded);
 
+                    document.getElementById('tok').value = data.access_token;
+
                     deferred.resolve(data);
                 }).fail(function (xhr, status, error) {
                     deferred.reject(xhr);
