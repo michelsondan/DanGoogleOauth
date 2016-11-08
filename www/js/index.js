@@ -39,8 +39,12 @@ var googleapi = {
                     redirect_uri: options.redirect_uri,
                     grant_type: 'authorization_code'
                 }).done(function (data) {
-                    alert(data.access_token);
-                    alert(gapi);
+                    gapi.auth.setToken({
+                        access_token: data.access_token
+                    });
+
+                    gapi.client.load('drive', 'v2', onDriveClientLoaded);
+
                     deferred.resolve(data);
                 }).fail(function (xhr, status, error) {
                     deferred.reject(xhr);
@@ -77,5 +81,23 @@ $(document).on('deviceready', function () {
 
 function driveloaded() {
     alert('drive loaded');
-    alert(gapi);
+}
+
+function onDriveClientLoaded() {
+    var request = gapi.client.drive.files.list({
+        'pageSize': 10,
+        'fields': "nextPageToken, files(id, name)"
+    });
+
+    request.execute(function (resp) {
+        var files = resp.files;
+        if (files && files.length > 0) {
+            for (var i = 0; i < files.length; i++) {
+                var file = files[i];
+                alert(file.name + ' (' + file.id + ')');
+            }
+        } else {
+            alert('No files found.');
+        }
+    });
 }
