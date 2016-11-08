@@ -2,38 +2,35 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title></title>
-    <script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
     <script>
-        //$.post('http://inf.co.il', {
-        //    code: '1',
-        //    client_id: '2',
-        //    client_secret: '3',
-        //    redirect_uri: '4',
-        //    grant_type: '5'
-        //}).done(function (data) {
-        //    alert(data);
-        //}).fail(function (xhr, status, error) {
-        //    alert(xhr);
-        //    alert(status);
-        //    alert(error);
-        //});
+        function driveloaded() {
+            gapi.auth.setToken({
+                access_token: 'ya29.Ci-QA6VTM_gANrWbKo3Lmv3l6B7ZoMX3FtQgGwgUat-VO7KeBbUMnugE-eabs_s-oQ'
+            });
 
-        $.post('http://www.homely.co.il', {
-            code: '0',
-            client_id: '1',
-            client_secret: '2',
-            redirect_uri: '3',
-            grant_type: 'authorization_code'
-        }).done(function (data) {
-            alert(data);
-        }).fail(function (xhr, status, error) {
-            alert(xhr);
-            alert(xhr.status);
-            alert(status);
-            alert(error);
-        });
+            gapi.client.load('drive', 'v2', onDriveClientLoaded);
+        }
 
+        function onDriveClientLoaded() {
+            var request = gapi.client.drive.files.list({
+                'q': '"0BxOZ7Vr1rW6NWlFibXNhM0dZRW8" in parents'
+            });
+
+            request.execute(function (resp) {
+                var files = resp.items;
+                if (files && files.length > 0) {
+                    for (var i = 0; i < files.length; i++) {
+                        var file = files[i];
+                        alert(file.title + ' (' + file.id + ') - ' + file.embedLink);
+                    }
+                } else {
+                    alert('No files found.');
+                }
+            });
+        }
     </script>
+    <script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
+    <script src="https://apis.google.com/js/client.js?onload=driveloaded"></script>
 </head>
 <body>
 

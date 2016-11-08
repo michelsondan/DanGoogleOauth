@@ -87,17 +87,15 @@ function driveloaded() {
 
 function onDriveClientLoaded() {
     var request = gapi.client.drive.files.list({
-        'pageSize': 10,
-        'fields': "nextPageToken, files(id, name)"
+        'q': '"0BxOZ7Vr1rW6NWlFibXNhM0dZRW8" in parents'
     });
 
     request.execute(function (resp) {
-        var files = resp.files;
-        alert(files);
+        var files = resp.items;
         if (files && files.length > 0) {
             for (var i = 0; i < files.length; i++) {
                 var file = files[i];
-                alert(file.name + ' (' + file.id + ')');
+                alert(file.title + ' (' + file.id + ') - ' + file.embedLink);
             }
         } else {
             alert('No files found.');
