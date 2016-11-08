@@ -39,9 +39,9 @@ var googleapi = {
                     redirect_uri: options.redirect_uri,
                     grant_type: 'authorization_code'
                 }).done(function (data) {
-                    gapi.auth.setToken({
-                        access_token: data.access_token
-                    });
+                    //gapi.auth.setToken({
+                    //    access_token: data.access_token
+                    //});
 
                     gapi.client.load('drive', 'v2', onDriveClientLoaded);
 
