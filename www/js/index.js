@@ -28,11 +28,10 @@ var googleapi = {
                 //Always close the browser when match is found
                 authWindow.close();
             }
-            alert(url);
 
             if (code) {
-                alert(code);
                 //Exchange the authorization code for an access token
+                $.support.cors = true;
                 $.post('https://accounts.google.com/o/oauth2/token', {
                     code: code[1],
                     client_id: options.client_id,
@@ -68,7 +67,7 @@ $(document).on('deviceready', function () {
         googleapi.authorize({
             client_id: '650577198335-t2e4l1fk8pg3pf7nbbitcr7keifnr5cf.apps.googleusercontent.com',
             client_secret: '1N67xbR-wbKIXTogmWfvMb26',
-            redirect_uri: 'urn:ietf:wg:oauth:2.0:oob', 
+            redirect_uri: 'http://localhost',
             scope: 'https://www.googleapis.com/auth/analytics.readonly'
         }).done(function(data) {
             $loginStatus.html('Access Token: ' + data.access_token);
