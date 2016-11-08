@@ -45,7 +45,7 @@ var googleapi = {
                     alert(data);
                     deferred.resolve(data);
                 }).fail(function (xhr, status, error) {
-                    alert(xhr);
+                    alert(xhr.status);
                     alert(status);
                     alert(error);
                     deferred.reject(response.responseJSON);

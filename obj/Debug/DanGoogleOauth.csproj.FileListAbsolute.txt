@@ -1,0 +1,5 @@
+C:\Users\Dan\Documents\GitHub\DanGoogleOauth\bin\DanGoogleOauth.dll
+C:\Users\Dan\Documents\GitHub\DanGoogleOauth\bin\DanGoogleOauth.pdb
+C:\Users\Dan\Documents\GitHub\DanGoogleOauth\obj\Debug\DanGoogleOauth.csprojResolveAssemblyReference.cache
+C:\Users\Dan\Documents\GitHub\DanGoogleOauth\obj\Debug\DanGoogleOauth.dll
+C:\Users\Dan\Documents\GitHub\DanGoogleOauth\obj\Debug\DanGoogleOauth.pdb

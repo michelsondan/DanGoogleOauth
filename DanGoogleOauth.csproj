@@ -95,6 +95,7 @@
     <Content Include="www\res\screen\ios\screen-iphone-portrait-568h-2x.png" />
     <Content Include="www\res\screen\ios\screen-iphone-portrait.png" />
     <Content Include="www\res\screen\windows-phone\screen-portrait.jpg" />
+    <Content Include="www\test.html" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
