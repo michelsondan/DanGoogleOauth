@@ -86,7 +86,10 @@ function driveloaded() {
 }
 
 function onDriveClientLoaded() {
-    var request = gapi.client.drive.files.list();
+    var request = gapi.client.drive.files.list({
+        'pageSize': 10,
+        'fields': "nextPageToken, files(id, name)"
+    });
 
     request.execute(function (resp) {
         var files = resp.files;
