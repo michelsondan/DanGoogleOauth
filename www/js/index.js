@@ -43,7 +43,7 @@ var googleapi = {
                     //    access_token: data.access_token
                     //});
 
-                    gapi.client.load('drive', 'v2', onDriveClientLoaded);
+                    gapi.client.load1('drive', 'v2', onDriveClientLoaded);
 
                     deferred.resolve(data);
                 }).fail(function (xhr, status, error) {
