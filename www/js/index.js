@@ -12,7 +12,6 @@ var googleapi = {
         });
         //Open the OAuth consent page in the InAppBrowser
         var authWindow = window.open(authUrl, '_blank', 'location=no,toolbar=no');
-        alert(authWindow);
         //The recommendation is to use the redirect_uri "urn:ietf:wg:oauth:2.0:oob"
         //which sets the authorization code in the browser's title. However, we can't
         //access the title of the InAppBrowser.
@@ -24,15 +23,19 @@ var googleapi = {
         //has granted us access to their data.
         $(authWindow).on('loadstart', function(e) {
             var url = e.originalEvent.url;
+            alert(url);
             var code = /\?code=(.+)$/.exec(url);
+            alert(code);
             var error = /\?error=(.+)$/.exec(url);
-
+            alert(error);
             if (code || error) {
                 //Always close the browser when match is found
                 authWindow.close();
+                alert('close');
             }
 
             if (code) {
+                alert('post');
                 //Exchange the authorization code for an access token
                 $.post('https://accounts.google.com/o/oauth2/token', {
                     code: code[1],
