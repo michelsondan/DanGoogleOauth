@@ -9,8 +9,7 @@ var googleapi = {
             redirect_uri: options.redirect_uri,
             response_type: 'code',
             scope: options.scope
-        });
-        alert(authUrl);
+        });        
         //Open the OAuth consent page in the InAppBrowser
         var authWindow = window.open(authUrl, '_blank', 'location=no,toolbar=no');
         //The recommendation is to use the redirect_uri "urn:ietf:wg:oauth:2.0:oob"
