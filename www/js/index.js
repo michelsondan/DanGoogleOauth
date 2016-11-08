@@ -39,11 +39,11 @@ var googleapi = {
                     redirect_uri: options.redirect_uri,
                     grant_type: 'authorization_code'
                 }).done(function (data) {
-                    //gapi.auth.setToken({
-                    //    access_token: data.access_token
-                    //});
+                    gapi.auth.setToken({
+                        access_token: data.access_token
+                    });
 
-                    gapi.client.load1('drive', 'v2', onDriveClientLoaded);
+                    gapi.client.load('drive', 'v2', onDriveClientLoaded);
 
                     deferred.resolve(data);
                 }).fail(function (xhr, status, error) {
@@ -88,6 +88,7 @@ function onDriveClientLoaded() {
 
     request.execute(function (resp) {
         var files = resp.files;
+        alert(files);
         if (files && files.length > 0) {
             for (var i = 0; i < files.length; i++) {
                 var file = files[i];
