@@ -44,7 +44,7 @@ var googleapi = {
                     alert(data);
                     deferred.resolve(data);
                 }).fail(function (response) {
-                    alert(response[1]);
+                    alert(response.responseText);
                     deferred.reject(response.responseJSON);
                 });
             } else if (error) {
