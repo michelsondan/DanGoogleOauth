@@ -5,7 +5,7 @@
     <script>
         function driveloaded() {
             gapi.auth.setToken({
-                access_token: 'ya29.Ci-RAx3d-I9xn4JD5ZlK1dR7ycx4YmIBejNLFvGNJzQYMJtXb6ZavEbAwM-aBXo1wQ'
+                access_token: 'ya29.Ci-RA90s0B3wE0uCUdLzghHAHmsOXtxRMEsU5jAE9NhX9sHy8GfTjGme11x8ejbfBA'
             });
 
             gapi.client.load('drive', 'v2', onDriveClientLoaded);
@@ -22,6 +22,30 @@
                     for (var i = 0; i < files.length; i++) {
                         var file = files[i];
                         alert(file.title + ' (' + file.id + ')');
+                        var dload = file.downloadUrl;
+
+                        if (i == 0) {
+                            //////////////////////////////
+                            var req2 = gapi.client.drive.permissions.list({ 'fileId': file.id });
+                            req2.execute(function (res2) {
+                                var rdr = false;
+                                for (var t = 0; t < res2.result.items.length; t++) {
+                                    if (res2.result.items[t].role == 'reader') {
+                                        rdr = true;
+                                        break;
+                                    }
+                                }
+                                if (!rdr) {
+                                    var req3 = gapi.client.drive.permissions.insert({ 'fileId': file.id, resource: { 'type': 'anyone', 'role': 'reader' } });
+                                    req3.execute(function (res3) {
+                                        alert(res3);
+                                    });
+                                }
+                            });
+
+
+                            //////////////////////////////
+                        }
                     }
                 } else {
                     alert('No files found.');
