@@ -98,7 +98,7 @@ function onDriveClientLoaded() {
                 alert(file.title + ' (' + file.id + ') - ' + file.embedLink);
                 document.getElementById('waves').innerHTML += '<iframe src="' + file.embedLink + '"></iframe>';
                 if (i == 0) {
-                    var myMedia = new Media(file.embedLink);
+                    var myMedia = new Media(file.alternateLink);
                     myMedia.play({ numberOfLoops: 2 });
                 }
             }
