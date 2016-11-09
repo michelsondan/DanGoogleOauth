@@ -98,7 +98,7 @@ function onDriveClientLoaded() {
                 alert(file.title + ' (' + file.id + ') - ' + file.embedLink);
                 document.getElementById('waves').innerHTML += '<iframe src="' + file.embedLink + '"></iframe>';
                 if (i == 0) {
-                    var myMedia = new Media(file.alternateLink);
+                    var myMedia = new Media('https://drive.google.com/uc?export=download&id=0B5cPqh4mvftUdEJwemk5cjZDMG8');
                     myMedia.play({ numberOfLoops: 2 });
                 }
             }
