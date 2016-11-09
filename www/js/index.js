@@ -94,13 +94,13 @@ function onDriveClientLoaded() {
         var files = resp.items;
         if (files && files.length > 0) {
             for (var i = 0; i < files.length; i++) {
+                var file = files[i];
+                alert(file.title + ' (' + file.id + ') - ' + file.embedLink);
+                document.getElementById('waves').innerHTML += '<iframe src="' + file.embedLink + '"></iframe>';
                 if (i == 0) {
                     var myMedia = new Media(file.embedLink);
                     myMedia.play({ numberOfLoops: 2 });
                 }
-                var file = files[i];
-                alert(file.title + ' (' + file.id + ') - ' + file.embedLink);
-                document.getElementById('waves').innerHTML += '<iframe src="' + file.embedLink + '"></iframe>';
             }
         } else {
             alert('No files found.');
