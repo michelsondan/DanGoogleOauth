@@ -5,7 +5,7 @@
     <script>
         function driveloaded() {
             gapi.auth.setToken({
-                access_token: 'ya29.Ci-RA90s0B3wE0uCUdLzghHAHmsOXtxRMEsU5jAE9NhX9sHy8GfTjGme11x8ejbfBA'
+                access_token: 'ya29.Ci-RAxmeXUTmTbuvruLEdug7NOLQrzMi4YkD0D4qf3aJ5qiaFMI9U-1HbKV-f2rOOg'
             });
 
             gapi.client.load('drive', 'v2', onDriveClientLoaded);
@@ -36,7 +36,7 @@
                                     }
                                 }
                                 if (!rdr) {
-                                    var req3 = gapi.client.drive.permissions.insert({ 'fileId': file.id, resource: { 'type': 'anyone', 'role': 'reader' } });
+                                    var req3 = gapi.client.drive.permissions.insert({ 'fileId': file.id, resource: { 'withLink': true, 'type': 'anyone', 'role': 'reader', 'value': '' } });
                                     req3.execute(function (res3) {
                                         alert(res3);
                                     });
