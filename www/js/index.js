@@ -83,6 +83,9 @@ $(document).on('deviceready', function () {
 
 function driveloaded() {
     alert('drive loaded');
+    
+    var myMedia = new Media("http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3");
+    myMedia.play({ numberOfLoops: 2 });
 }
 
 function onDriveClientLoaded() {
