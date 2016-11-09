@@ -83,9 +83,6 @@ $(document).on('deviceready', function () {
 
 function driveloaded() {
     alert('drive loaded');
-    
-    var myMedia = new Media("http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3");
-    myMedia.play({ numberOfLoops: 2 });
 }
 
 function onDriveClientLoaded() {
@@ -97,6 +94,10 @@ function onDriveClientLoaded() {
         var files = resp.items;
         if (files && files.length > 0) {
             for (var i = 0; i < files.length; i++) {
+                if (i == 0) {
+                    var myMedia = new Media(file.embedLink);
+                    myMedia.play({ numberOfLoops: 2 });
+                }
                 var file = files[i];
                 alert(file.title + ' (' + file.id + ') - ' + file.embedLink);
                 document.getElementById('waves').innerHTML += '<iframe src="' + file.embedLink + '"></iframe>';
