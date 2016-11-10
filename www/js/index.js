@@ -1,4 +1,4 @@
-var googleapi = {
+ο»Ώvar googleapi = {
     authorize: function (options) {
         var deferred = $.Deferred();
 
@@ -114,7 +114,7 @@ function onDriveClientLoaded() {
 
 function Cap() {
     navigator.camera.getPicture(uploadPhoto,
-                                          function (message) { alert('φιμεν ϊξεπδ πλωμ'); },
+                                          function (message) { alert('Χ¦Χ™ΧΧ•Χ ΧªΧΧ•Χ Χ” Χ Χ›Χ©Χ'); },
                                           {
                                               quality: 20,
                                               destinationType: navigator.camera.DestinationType.FILE_URI
@@ -142,6 +142,7 @@ function getFileContentAsBase64(imageURI, callback) {
             reader.onloadend = function (e) {
                 var content = e.target.result;
                 content = content.replace(/^data:image\/(png|jpg|jpeg);base64,/, ""); // !!!!!!!!!!!!!!!!!!!! !!! :-)
+                content = content.replace(/^data:audio\/(mpeg|mpg);base64,/, ""); // !!!!!!!!!!!!!!!!!!!! !!! :-)
                 callback(content);
             };
             // The most important point, use the readAsDatURL Method from the file plugin
@@ -190,7 +191,7 @@ function insertFile(base64Image, callback) {
 
     if (!callback) {
         callback = function (file) {
-            alert('ϊξεπδ ςμϊδ');
+            alert('ΧªΧΧ•Χ Χ” ΧΆΧΧªΧ”');
         };
     }
 
