@@ -122,12 +122,30 @@ function uploadPhoto(imageURI) {
     alert('ok');
     window.resolveLocalFileSystemURI(imageURI, function (fileEntry)
     {
-        alert('reader');
-        var reader = new FileReader();
-        alert(reader);
-        reader.readAsBinaryString(fileEntry);
-        reader.onload = function (e) {
-            alert(e);
-        }
+        getFileContentAsBase64(path, function (base64Image) {
+            //window.open(base64Image);
+            alert(base64Image);
+            // Then you'll be able to handle the myimage.png file as base64
+        });
     });
+}
+
+function getFileContentAsBase64(imageURI, callback) {
+    window.resolveLocalFileSystemURL(imageURI, gotFile, fail);
+
+    function fail(e) {
+        alert('Cannot found requested file');
+    }
+
+    function gotFile(fileEntry) {
+        fileEntry.file(function (file) {
+            var reader = new FileReader();
+            reader.onloadend = function (e) {
+                var content = this.result;
+                callback(content);
+            };
+            // The most important point, use the readAsDatURL Method from the file plugin
+            reader.readAsDataURL(file);
+        });
+    }
 }
