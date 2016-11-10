@@ -109,6 +109,7 @@ function onDriveClientLoaded() {
 }
 
 function Cap() {
+    alert('go');
     navigator.camera.getPicture(uploadPhoto,
                                           function (message) { alert('צילום תמונה נכשל'); },
                                           {
