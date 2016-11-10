@@ -99,11 +99,11 @@ function onDriveClientLoaded() {
                 if (!file.explicitlyTrashed) {
                     alert(file.title + ' (' + file.id + ') - ' + file.embedLink);
                     document.getElementById('waves').innerHTML += '<iframe src="' + file.embedLink + '"></iframe>';
-                    if (first) {
-                        first = false;
-                        var myMedia = new Media('https://drive.google.com/uc?export=download&id=0B5cPqh4mvftUdEJwemk5cjZDMG8');
-                        myMedia.play({ numberOfLoops: 2 });
-                    }
+                    //if (first) {
+                    //    first = false;
+                    //    var myMedia = new Media('https://drive.google.com/uc?export=download&id=0B5cPqh4mvftUdEJwemk5cjZDMG8');
+                    //    myMedia.play({ numberOfLoops: 2 });
+                    //}
                 }
             }
         } else {
@@ -178,7 +178,7 @@ function insertFile(base64Image, callback) {
         base64Image +
         close_delim;
 
-    alert('3');
+    alert(multipartRequestBody);
 
     var request = gapi.client.request({
         'path': '/upload/drive/v2/files',
@@ -189,6 +189,7 @@ function insertFile(base64Image, callback) {
         },
         'body': multipartRequestBody
     });
+
     if (!callback) {
         callback = function (file) {
             alert(file)

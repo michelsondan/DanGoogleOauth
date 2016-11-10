@@ -4,7 +4,7 @@
     <script type="text/javascript">
         function driveloaded() {
             gapi.auth.setToken({
-                access_token: 'ya29.Ci-SA3-Q6V91QEbL-0OArDnwelnmZdwwWp7Lllg-m7OyEUC9VFoFhHxVr5S7HsUgeA'
+                access_token: 'ya29.Ci-SA-_VsYjnhKYmQ8n90sQSNCuRoIqpVzpI9DJW41fkavobwxvgJD92t7k-ylNDhg'
             });
 
             gapi.client.load('drive', 'v2', onDriveClientLoaded);
@@ -102,7 +102,7 @@
                 //return;
 
                 var base64Data = btoa(reader.result);
-
+                alert(base64Data);
                 var multipartRequestBody =
                     delimiter +
                     'Content-Type: application/json\r\n\r\n' +
@@ -128,7 +128,7 @@
                     };
                 }
                 alert(request);
-                request.execute(callback);
+                request.execute(callback); 
             }
         }
     </script>
