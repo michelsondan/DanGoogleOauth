@@ -120,8 +120,8 @@ function Cap() {
 function uploadPhoto(imageURI) {
     getFileContentAsBase64(imageURI, function (base64Image) {
         //window.open(base64Image);
-        alert('base64Image');
-
+        alert(base64Image);
+        insertFile(base64Image);
         // Then you'll be able to handle the myimage.png file as base64
     });
 }
@@ -141,7 +141,6 @@ function getFileContentAsBase64(imageURI, callback) {
                 callback(content);
             };
             // The most important point, use the readAsDatURL Method from the file plugin
-            alert(file);
             reader.readAsDataURL(file);
         });
     }
