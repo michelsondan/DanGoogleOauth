@@ -163,9 +163,6 @@ function insertFile(base64Image, callback) {
         'parents': [{ 'id': '0BxOZ7Vr1rW6NWlFibXNhM0dZRW8' }]
     };
 
-    alert('22');
-    alert(JSON.stringify(metadata));
-
     var multipartRequestBody =
         delimiter +
         'Content-Type: application/json\r\n\r\n' +
@@ -174,7 +171,7 @@ function insertFile(base64Image, callback) {
         'Content-Type: ' + contentType + '\r\n' +
         'Content-Transfer-Encoding: base64\r\n' +
         '\r\n' +
-        base64Data +
+        base64Image +
         close_delim;
 
     alert('3');
