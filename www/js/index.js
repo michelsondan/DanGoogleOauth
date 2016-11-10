@@ -194,3 +194,26 @@ function insertFile(base64Image, callback) {
 
     request.execute(callback);
 }
+
+function rec() {
+    navigator.device.capture.captureAudio(captureSuccess, captureError, {limit:2});
+}
+
+// capture callback
+var captureSuccess = function (mediaFiles) {
+    var i, path, len;
+    for (i = 0, len = mediaFiles.length; i < len; i += 1) {
+        path = mediaFiles[i].fullPath;
+        
+        var my_media = new Media(path, function () { },
+        // error callback 
+        function (err) { });
+
+        my_media.play();
+    }
+};
+
+// capture error callback
+var captureError = function (error) {
+    navigator.notification.alert('Error code: ' + error.code, null, 'Capture Error');
+};
