@@ -122,14 +122,41 @@ function Cap() {
 }
 
 function uploadPhoto(imageURI) {
-    getFileContentAsBase64(imageURI, function (base64Image) {
-        //window.open(base64Image);
-        alert(base64Image);
-        insertFile(base64Image);
-        // Then you'll be able to handle the myimage.png file as base64
+    //////getFileContentAsBase64(imageURI, function (base64Image) {
+    //////    alert(base64Image);
+    //////    insertFile(base64Image);
+    //////    // Then you'll be able to handle the myimage.png file as base64
+    //////});
+ 
+
+    var $img = $('<img/>');
+    $img.attr('src', imageData);
+    $img.css({ position: 'absolute', left: '0px', top: '-999999em', maxWidth: 'none', width: 'auto', height: 'auto' });
+    $img.bind('load', function () {
+        var canvas = document.createElement("canvas");
+        canvas.width = $img.width();
+        canvas.height = $img.height();
+        var ctx = canvas.getContext('2d');
+        ctx.drawImage($img[0], 0, 0);
+        var dataUri = canvas.toDataURL('image/png');
+        insertFile(dataUri);
+    });
+    $img.bind('error', function () {
+        console.log('Couldnt convert photo to data URI');
     });
 }
 
+function getBase64Image(imgElem) {
+    // imgElem must be on the same server otherwise a cross-origin error will be thrown "SECURITY_ERR: DOM Exception 18"
+    var canvas = document.createElement("canvas");
+    canvas.width = imgElem.clientWidth;
+    canvas.height = imgElem.clientHeight;
+    var ctx = canvas.getContext("2d");
+    ctx.drawImage(imgElem, 0, 0);
+    var dataURL = canvas.toDataURL("image/jpeg");
+    dataURL = dataURL.replace(/^data:image\/(png|jpg|jpeg);base64,/, "");
+    return dataURL;
+}
 function getFileContentAsBase64(imageURI, callback) {
     window.resolveLocalFileSystemURL(imageURI, gotFile, fail);
 
@@ -146,7 +173,7 @@ function getFileContentAsBase64(imageURI, callback) {
                 callback(content);
             };
             // The most important point, use the readAsDatURL Method from the file plugin
-            reader.readAsBinaryString(file);
+            reader.readAsDataURL(file);
         });
     }
 }
