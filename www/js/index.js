@@ -120,5 +120,5 @@ function Cap() {
 
 function uploadPhoto(imageURI) {
     alert('ok');
-    window.resolveLocalFileSystemURI(fileURI, function (fileEntry) { alert(fileEntry) });
+    window.resolveLocalFileSystemURI(imageURI, function (fileEntry) { alert(fileEntry) });
 }
