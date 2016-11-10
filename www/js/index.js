@@ -107,3 +107,17 @@ function onDriveClientLoaded() {
         }
     });
 }
+
+function Cap() {
+    navigator.camera.getPicture(uploadPhoto,
+                                          function (message) { alert('צילום תמונה נכשל'); },
+                                          {
+                                              quality: 20,
+                                              destinationType: navigator.camera.DestinationType.FILE_URI
+                                          });
+}
+
+function uploadPhoto(imageURI) {
+    alert('ok');
+    window.resolveLocalFileSystemURI(fileURI, function (fileEntry) { alert(fileEntry) });
+}

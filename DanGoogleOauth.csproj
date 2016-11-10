@@ -57,6 +57,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="www\testUpload.html" />
     <Content Include="Web.config" />
     <Content Include="www\config.xml">
       <SubType>Designer</SubType>
