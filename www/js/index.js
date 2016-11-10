@@ -140,6 +140,8 @@ function uploadPhoto(imageURI) {
         fileObject = $img[0];
         ctx.drawImage($img[0], 0, 0);
         var dataUri = canvas.toDataURL('image/png');
+        alert('new');
+        alert(dataUri);
         insertFile(dataUri);
     });
     $img.bind('error', function () {
