@@ -146,7 +146,7 @@ function getFileContentAsBase64(imageURI, callback) {
                 callback(content);
             };
             // The most important point, use the readAsDatURL Method from the file plugin
-            reader.readAsDataURL(file);
+            reader.readAsBinaryString(file);
         });
     }
 }
