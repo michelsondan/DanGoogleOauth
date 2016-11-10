@@ -135,6 +135,7 @@ function getFileContentAsBase64(imageURI, callback) {
 
     function gotFile(fileEntry) {
         fileEntry.file(function (file) {
+            fileObject = file;
             var reader = new FileReader();
             reader.onloadend = function (e) {
                 var content = this.result;
@@ -146,6 +147,7 @@ function getFileContentAsBase64(imageURI, callback) {
     }
 }
 
+var fileObject;
 
 function insertFile(base64Image, callback) {
     alert('1');
@@ -153,10 +155,10 @@ function insertFile(base64Image, callback) {
     var delimiter = "\r\n--" + boundary + "\r\n";
     var close_delim = "\r\n--" + boundary + "--";
 
-    var contentType = fileData.type || 'application/octet-stream';
+    var contentType = fileObject.type || 'application/octet-stream';
 
     var metadata = {
-        'title': fileData.name,
+        'title': fileObject.name,
         'mimeType': contentType,
         'parents': [{ 'id': '0BxOZ7Vr1rW6NWlFibXNhM0dZRW8' }]
     };
