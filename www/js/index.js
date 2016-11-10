@@ -206,9 +206,9 @@ var captureSuccess = function (mediaFiles) {
     for (i = 0, len = mediaFiles.length; i < len; i += 1) {
         path = mediaFiles[i].fullPath;
         alert(path);
-        var my_media = new Media(path, function () { },
+        var my_media = new Media(path, function () {alert('success') },
         // error callback 
-        function (err) { });
+        function (err) { alert(err)});
         alert(my_media);
         my_media.play();
     }
