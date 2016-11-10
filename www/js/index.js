@@ -109,7 +109,6 @@ function onDriveClientLoaded() {
 }
 
 function Cap() {
-    alert('go');
     navigator.camera.getPicture(uploadPhoto,
                                           function (message) { alert('צילום תמונה נכשל'); },
                                           {
@@ -119,10 +118,10 @@ function Cap() {
 }
 
 function uploadPhoto(imageURI) {
-    alert('ok');
     getFileContentAsBase64(imageURI, function (base64Image) {
         //window.open(base64Image);
-        alert(base64Image);
+        alert('base64Image');
+
         // Then you'll be able to handle the myimage.png file as base64
     });
 }
@@ -136,18 +135,58 @@ function getFileContentAsBase64(imageURI, callback) {
 
     function gotFile(fileEntry) {
         fileEntry.file(function (file) {
-            alert('1');
             var reader = new FileReader();
             reader.onloadend = function (e) {
-                alert('2');
                 var content = this.result;
                 callback(content);
             };
             // The most important point, use the readAsDatURL Method from the file plugin
-            alert('4');
             alert(file);
             reader.readAsDataURL(file);
-            alert('5');
         });
     }
+}
+
+
+function insertFile(base64Image, callback) {
+    var boundary = '-------314159265358979323846';
+    var delimiter = "\r\n--" + boundary + "\r\n";
+    var close_delim = "\r\n--" + boundary + "--";
+
+    var contentType = fileData.type || 'application/octet-stream';
+
+    var metadata = {
+        'title': fileData.name,
+        'mimeType': contentType,
+        'parents': [{ 'id': '0BxOZ7Vr1rW6NWlFibXNhM0dZRW8' }]
+    };
+
+
+    var multipartRequestBody =
+        delimiter +
+        'Content-Type: application/json\r\n\r\n' +
+        JSON.stringify(metadata) +
+        delimiter +
+        'Content-Type: ' + contentType + '\r\n' +
+        'Content-Transfer-Encoding: base64\r\n' +
+        '\r\n' +
+        base64Data +
+        close_delim;
+
+    var request = gapi.client.request({
+        'path': '/upload/drive/v2/files',
+        'method': 'POST',
+        'params': { 'uploadType': 'multipart' },
+        'headers': {
+            'Content-Type': 'multipart/mixed; boundary="' + boundary + '"'
+        },
+        'body': multipartRequestBody
+    });
+    if (!callback) {
+        callback = function (file) {
+            alert(file)
+        };
+    }
+    alert(request);
+    request.execute(callback);
 }
