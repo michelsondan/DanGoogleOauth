@@ -122,6 +122,7 @@ function Cap() {
 }
 
 function uploadPhoto(imageURI) {
+    alert(imageURI);
     getFileContentAsBase64(imageURI, function (base64Image) {
         insertFile(base64Image);
         // Then you'll be able to handle the myimage.png file as base64
