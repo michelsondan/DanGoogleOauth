@@ -142,7 +142,7 @@ function getFileContentAsBase64(imageURI, callback) {
             fileObject = file;
             var reader = new FileReader();
             reader.onloadend = function (e) {
-                var content = this.result;
+                var content = e.target.result;
                 callback(content);
             };
             // The most important point, use the readAsDatURL Method from the file plugin
