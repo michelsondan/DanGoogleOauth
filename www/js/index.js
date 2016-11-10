@@ -120,5 +120,14 @@ function Cap() {
 
 function uploadPhoto(imageURI) {
     alert('ok');
-    window.resolveLocalFileSystemURI(imageURI, function (fileEntry) { alert(fileEntry) });
+    window.resolveLocalFileSystemURI(imageURI, function (fileEntry)
+    {
+        alert('reader');
+        var reader = new FileReader();
+        alert(reader);
+        reader.readAsBinaryString(fileEntry);
+        reader.onload = function (e) {
+            alert(e);
+        }
+    });
 }
