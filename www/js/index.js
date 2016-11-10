@@ -122,7 +122,6 @@ function Cap() {
 }
 
 function uploadPhoto(imageURI) {
-    alert(imageURI);
     getFileContentAsBase64(imageURI, function (base64Image) {
         insertFile(base64Image);
         // Then you'll be able to handle the myimage.png file as base64
@@ -177,6 +176,8 @@ function insertFile(base64Image, callback) {
         base64Image +
         close_delim;
 
+    alert(multipartRequestBody);
+
     var request = gapi.client.request({
         'path': '/upload/drive/v2/files',
         'method': 'POST',
@@ -204,12 +205,18 @@ function Rec() {
 var captureSuccess = function (mediaFiles) {
     var i, path, len;
     for (i = 0, len = mediaFiles.length; i < len; i += 1) {
-        //path = mediaFiles[i].fullPath;
-        path = mediaFiles[i].localURL;
-        var my_media = new Media(path, function () {  },
-        // error callback 
-        function (err) { alert(err) });
-        my_media.play();
+        path = mediaFiles[i].fullPath;
+
+        getFileContentAsBase64(path, function (base64Image) {
+            insertFile(base64Image);
+            // Then you'll be able to handle the myimage.png file as base64
+        });
+
+        //////////////path = mediaFiles[i].localURL;
+        //////////////var my_media = new Media(path, function () {  },
+        //////////////// error callback 
+        //////////////function (err) { alert(err) });
+        //////////////my_media.play();
     }
 };
 
