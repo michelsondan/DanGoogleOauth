@@ -207,9 +207,9 @@ var captureSuccess = function (mediaFiles) {
         //path = mediaFiles[i].fullPath;
         path = mediaFiles[i].localURL;
         alert(path);
-        var my_media = new Media('https://drive.google.com/uc?export=download&id=0B5cPqh4mvftUdEJwemk5cjZDMG8', function () { alert('success') },
+        var my_media = new Media(path, function () { alert('success') },
         // error callback 
-        function (err) { alert(err)});
+        function (err) { alert(err) });
         alert(my_media);
         my_media.play();
     }
