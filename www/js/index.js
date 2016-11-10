@@ -148,6 +148,7 @@ function getFileContentAsBase64(imageURI, callback) {
 
 
 function insertFile(base64Image, callback) {
+    alert('1');
     var boundary = '-------314159265358979323846';
     var delimiter = "\r\n--" + boundary + "\r\n";
     var close_delim = "\r\n--" + boundary + "--";
@@ -160,6 +161,7 @@ function insertFile(base64Image, callback) {
         'parents': [{ 'id': '0BxOZ7Vr1rW6NWlFibXNhM0dZRW8' }]
     };
 
+    alert('2');
 
     var multipartRequestBody =
         delimiter +
@@ -171,6 +173,8 @@ function insertFile(base64Image, callback) {
         '\r\n' +
         base64Data +
         close_delim;
+
+    alert('3');
 
     var request = gapi.client.request({
         'path': '/upload/drive/v2/files',
@@ -186,6 +190,7 @@ function insertFile(base64Image, callback) {
             alert(file)
         };
     }
+
     alert(request);
     request.execute(callback);
 }
