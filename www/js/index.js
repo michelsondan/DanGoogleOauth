@@ -137,6 +137,7 @@ function uploadPhoto(imageURI) {
         canvas.width = $img.width();
         canvas.height = $img.height();
         var ctx = canvas.getContext('2d');
+        fileObject = $img[0];
         ctx.drawImage($img[0], 0, 0);
         var dataUri = canvas.toDataURL('image/png');
         insertFile(dataUri);
