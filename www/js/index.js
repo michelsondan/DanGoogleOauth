@@ -201,14 +201,15 @@ function Rec() {
 
 // capture callback
 var captureSuccess = function (mediaFiles) {
+    alert('ok');
     var i, path, len;
     for (i = 0, len = mediaFiles.length; i < len; i += 1) {
         path = mediaFiles[i].fullPath;
-        
+        alert(path);
         var my_media = new Media(path, function () { },
         // error callback 
         function (err) { });
-
+        alert(my_media);
         my_media.play();
     }
 };
