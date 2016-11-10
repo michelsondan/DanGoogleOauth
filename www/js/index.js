@@ -120,13 +120,10 @@ function Cap() {
 
 function uploadPhoto(imageURI) {
     alert('ok');
-    window.resolveLocalFileSystemURI(imageURI, function (fileEntry)
-    {
-        getFileContentAsBase64(path, function (base64Image) {
-            //window.open(base64Image);
-            alert(base64Image);
-            // Then you'll be able to handle the myimage.png file as base64
-        });
+    getFileContentAsBase64(imageURI, function (base64Image) {
+        //window.open(base64Image);
+        alert(base64Image);
+        // Then you'll be able to handle the myimage.png file as base64
     });
 }
 
