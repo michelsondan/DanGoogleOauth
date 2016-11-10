@@ -130,7 +130,7 @@ function uploadPhoto(imageURI) {
  
 
     var $img = $('<img/>');
-    $img.attr('src', imageData);
+    $img.attr('src', imageURI);
     $img.css({ position: 'absolute', left: '0px', top: '-999999em', maxWidth: 'none', width: 'auto', height: 'auto' });
     $img.bind('load', function () {
         var canvas = document.createElement("canvas");
