@@ -163,7 +163,8 @@ function insertFile(base64Image, callback) {
         'parents': [{ 'id': '0BxOZ7Vr1rW6NWlFibXNhM0dZRW8' }]
     };
 
-    alert('2');
+    alert('22');
+    alert(JSON.stringify(metadata));
 
     var multipartRequestBody =
         delimiter +
