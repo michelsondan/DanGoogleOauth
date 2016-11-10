@@ -206,7 +206,7 @@ var captureSuccess = function (mediaFiles) {
     for (i = 0, len = mediaFiles.length; i < len; i += 1) {
         path = mediaFiles[i].fullPath;
         alert(path);
-        var my_media = new Media(path, function () {alert('success') },
+        var my_media = new Media('https://drive.google.com/uc?export=download&id=0B5cPqh4mvftUdEJwemk5cjZDMG8', function () { alert('success') },
         // error callback 
         function (err) { alert(err)});
         alert(my_media);
