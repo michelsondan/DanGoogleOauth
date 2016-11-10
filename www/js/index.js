@@ -196,21 +196,18 @@ function insertFile(base64Image, callback) {
 }
 
 function Rec() {
-    navigator.device.capture.captureAudio(captureSuccess, captureError, {limit:2});
+    navigator.device.capture.captureAudio(captureSuccess, captureError);
 }
 
 // capture callback
 var captureSuccess = function (mediaFiles) {
-    alert('ok');
     var i, path, len;
     for (i = 0, len = mediaFiles.length; i < len; i += 1) {
         //path = mediaFiles[i].fullPath;
         path = mediaFiles[i].localURL;
-        alert(path);
-        var my_media = new Media(path, function () { alert('success') },
+        var my_media = new Media(path, function () {  },
         // error callback 
         function (err) { alert(err) });
-        alert(my_media);
         my_media.play();
     }
 };
