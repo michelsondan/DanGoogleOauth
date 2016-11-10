@@ -195,7 +195,7 @@ function insertFile(base64Image, callback) {
     request.execute(callback);
 }
 
-function rec() {
+function Rec() {
     navigator.device.capture.captureAudio(captureSuccess, captureError, {limit:2});
 }
 
