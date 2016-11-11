@@ -91,8 +91,7 @@ function loadFolder(folderID) {
     request.execute(function (resp) {
         var files = resp.items;
         if (files && files.length > 0) {
-            alert('1');
-            alert($("mainPanel"));
+            alert(files.length);
             $("mainPanel").innerHTML = '<ul class="list-group">';
             for (var i = 0; i < files.length; i++) {
                 var file = files[i];
@@ -102,6 +101,7 @@ function loadFolder(folderID) {
                 }
             }
             $("mainPanel").innerHTML += '</ul>';
+            alert($("mainPanel").innerHTML);
         } else {
             alert('No files found.');
         }
