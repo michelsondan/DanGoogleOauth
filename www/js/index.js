@@ -45,8 +45,6 @@
 
                     gapi.client.load('drive', 'v2', onDriveClientLoaded);
 
-                    document.getElementById('tok').value = data.access_token;
-
                     deferred.resolve(data);
                 }).fail(function (xhr, status, error) {
                     deferred.reject(xhr);
@@ -64,48 +62,44 @@
 };
 
 $(document).on('deviceready', function () {
-    var $loginButton = $('#login a');
-    var $loginStatus = $('#login p');
 
-    $loginButton.on('click', function () {
-        googleapi.authorize({
-            client_id: '650577198335-t2e4l1fk8pg3pf7nbbitcr7keifnr5cf.apps.googleusercontent.com',
-            client_secret: '1N67xbR-wbKIXTogmWfvMb26',
-            redirect_uri: 'http://localhost',
-            scopes: [ 'https://www.googleapis.com/auth/drive', 'https://www.googleapis.com/auth/drive.file']
-        }).done(function (data) {
-            $loginStatus.html('Access Token: ' + data.access_token);
-        }).fail(function (data) {
-            $loginStatus.html(data.error);
-        });
+    googleapi.authorize({
+        client_id: '650577198335-t2e4l1fk8pg3pf7nbbitcr7keifnr5cf.apps.googleusercontent.com',
+        client_secret: '1N67xbR-wbKIXTogmWfvMb26',
+        redirect_uri: 'http://localhost',
+        scopes: ['https://www.googleapis.com/auth/drive', 'https://www.googleapis.com/auth/drive.file']
+    }).done(function (data) {
+
+    }).fail(function (data) {
+
     });
+
 });
 
 function driveloaded() {
-    alert('drive loaded');
+
 }
 
-function onDriveClientLoaded() {
+function onDriveClientLoaded(folderID) {
+}
+
+function loadFolder(folderID) {
     var request = gapi.client.drive.files.list({
-        'q': '"0BxOZ7Vr1rW6NWlFibXNhM0dZRW8" in parents'
+        'q': '"' + folderID + '" in parents'
     });
 
     request.execute(function (resp) {
         var files = resp.items;
         if (files && files.length > 0) {
-            var first = true;
+            $("mainPanel").innerHTML = '<ul class="list-group">';
             for (var i = 0; i < files.length; i++) {
                 var file = files[i];
                 if (!file.explicitlyTrashed) {
-                    alert(file.title + ' (' + file.id + ') - ' + file.embedLink);
-                    document.getElementById('waves').innerHTML += '<iframe src="' + file.embedLink + '"></iframe>';
-                    //if (first) {
-                    //    first = false;
-                    //    var myMedia = new Media('https://drive.google.com/uc?export=download&id=0B5cPqh4mvftUdEJwemk5cjZDMG8');
-                    //    myMedia.play({ numberOfLoops: 2 });
-                    //}
+                    //alert(file.title + ' (' + file.id + ') - ' + file.embedLink);
+                    $("mainPanel").innerHTML += '<li class="list-group-item">' + file.title + '</li>';
                 }
             }
+            $("mainPanel").innerHTML += '</ul>';
         } else {
             alert('No files found.');
         }
@@ -227,10 +221,22 @@ var captureError = function (error) {
 };
 
 
-$("#menusettings").click(function () {
-    alert('menusettings clicked');
+$("#folder1").click(function () {
+    loadFolder('0BxOZ7Vr1rW6NWlFibXNhM0dZRW8');
 });
 
-$("#menufolders").click(function () {
-    alert('menufolders clicked');
+$("#folder2").click(function () {
+    loadFolder('0BxOZ7Vr1rW6NMEk1YU5ab3pZa2M');
+});
+
+$("#folder3").click(function () {
+    loadFolder('0BxOZ7Vr1rW6NdkY4T2Vfam1obkk');
+});
+
+$("#folder4").click(function () {
+    loadFolder('0BxOZ7Vr1rW6NQWpCU19BdF9zVXc');
+});
+
+$("#folder5").click(function () {
+    loadFolder('0BxOZ7Vr1rW6NLXBDaHNTV00ySG8');
 });
