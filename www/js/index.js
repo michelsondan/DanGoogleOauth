@@ -225,3 +225,12 @@ var captureSuccess = function (mediaFiles) {
 var captureError = function (error) {
     navigator.notification.alert('Error code: ' + error.code, null, 'Capture Error');
 };
+
+
+$("#menusettings").click(function () {
+    alert('menusettings clicked');
+});
+
+$("#menufolders").click(function () {
+    alert('menufolders clicked');
+});
