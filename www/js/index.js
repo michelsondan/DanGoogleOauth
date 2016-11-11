@@ -96,15 +96,14 @@ function loadFolder(folderID) {
                 var file = files[i];
                 if (!file.explicitlyTrashed) {
                     //alert(file.title + ' (' + file.id + ') - ' + file.embedLink);
-                    s += ('<li class="list-group-item">' + file.title + '</li>');
+                    s += ('<li class="list-group-item">' + file.title + '<button type="button" class="btn btn-default btn-lg"> <span class="glyphicon glyphicon-headphones" aria-hidden="true"></span>רוץ</button></li>');
                 }
             }
             s += '</ul>';
             var mainPanel = document.getElementById('mainPanel');
             mainPanel.innerHTML = s;
-            alert(mainPanel.innerHTML);
         } else {
-            alert('No files found.');
+            mainPanel.innerHTML = '<ul class="list-group"><li class="list-group-item">אין קבצים</li>';
         }
     });
 }
