@@ -57,6 +57,14 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="www\bootstrap\css\bootstrap-theme.css" />
+    <Content Include="www\bootstrap\css\bootstrap-theme.min.css" />
+    <Content Include="www\bootstrap\css\bootstrap.css" />
+    <Content Include="www\bootstrap\css\bootstrap.min.css" />
+    <Content Include="www\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="www\bootstrap\js\bootstrap.js" />
+    <Content Include="www\bootstrap\js\bootstrap.min.js" />
+    <Content Include="www\bootstrap\js\npm.js" />
     <Content Include="www\testUpload.html" />
     <Content Include="Web.config" />
     <Content Include="www\config.xml">
@@ -110,7 +118,16 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+    <Content Include="www\bootstrap\css\bootstrap-theme.css.map" />
+    <Content Include="www\bootstrap\css\bootstrap-theme.min.css.map" />
+    <Content Include="www\bootstrap\css\bootstrap.css.map" />
+    <Content Include="www\bootstrap\css\bootstrap.min.css.map" />
+    <Content Include="www\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="www\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="www\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="www\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
