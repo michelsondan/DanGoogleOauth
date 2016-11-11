@@ -91,17 +91,18 @@ function loadFolder(folderID) {
     request.execute(function (resp) {
         var files = resp.items;
         if (files && files.length > 0) {
-            alert(files.length);
-            $("mainPanel").html('<ul class="list-group">');
+            var s = '<ul class="list-group">';
             for (var i = 0; i < files.length; i++) {
                 var file = files[i];
                 if (!file.explicitlyTrashed) {
                     //alert(file.title + ' (' + file.id + ') - ' + file.embedLink);
-                    $("mainPanel").html($("mainPanel").html += '<li class="list-group-item">' + file.title + '</li>');
+                    s += ('<li class="list-group-item">' + file.title + '</li>');
                 }
             }
-            $("mainPanel").html($("mainPanel").html += '</ul>');
-            alert($("mainPanel").html);
+            s += '</ul>';
+            var mainPanel = document.getElementById('mainPanel');
+            mainPanel.innerHTML = s;
+            alert(mainPanel.innerHTML);
         } else {
             alert('No files found.');
         }
