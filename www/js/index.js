@@ -8,7 +8,7 @@
             redirect_uri: options.redirect_uri,
             response_type: 'code',
             scope: options.scopes.join(' ')
-        });        
+        });
         //Open the OAuth consent page in the InAppBrowser
         var authWindow = window.open(authUrl, '_blank', 'location=no,toolbar=no');
         //The recommendation is to use the redirect_uri "urn:ietf:wg:oauth:2.0:oob"
@@ -96,7 +96,7 @@ function loadFolder(folderID) {
                 var file = files[i];
                 if (!file.explicitlyTrashed) {
                     //alert(file.title + ' (' + file.id + ') - ' + file.embedLink);
-                    s += ('<li class="list-group-item">' + file.title + '<button type="button" class="btn btn-default btn-lg"> <span class="glyphicon glyphicon-headphones" aria-hidden="true"></span>רוץ</button></li>');
+                    s += ('<li class="list-group-item">' + file.title + '&nbsp;&nbsp;<button type="button" class="btn btn-default btn-lg" onclick=playAudio("' + file.id + '");> <span class="glyphicon glyphicon-headphones" aria-hidden="true"></span> רוץ</button></li>');
                 }
             }
             s += '</ul>';
@@ -121,7 +121,7 @@ function uploadPhoto(imageURI) {
     getFileContentAsBase64(imageURI, function (base64Image) {
         insertFile(base64Image);
         // Then you'll be able to handle the myimage.png file as base64
-    }); 
+    });
 }
 
 function getFileContentAsBase64(imageURI, callback) {
@@ -216,6 +216,13 @@ var captureSuccess = function (mediaFiles) {
         //////////////my_media.play();
     }
 };
+
+function playAudio(id) {
+    var my_media = new Media('https://drive.google.com/uc?export=download&id=' + id, function () { },
+            // error callback 
+            function (err) { alert(err) });
+    my_media.play();
+}
 
 // capture error callback
 var captureError = function (error) {
