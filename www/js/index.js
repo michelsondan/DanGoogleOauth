@@ -91,6 +91,8 @@ function loadFolder(folderID) {
     request.execute(function (resp) {
         var files = resp.items;
         if (files && files.length > 0) {
+            alert('1');
+            alert($("mainPanel"));
             $("mainPanel").innerHTML = '<ul class="list-group">';
             for (var i = 0; i < files.length; i++) {
                 var file = files[i];
