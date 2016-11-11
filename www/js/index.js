@@ -103,6 +103,7 @@ function loadFolder(folderID) {
             var mainPanel = document.getElementById('mainPanel');
             mainPanel.innerHTML = s;
         } else {
+            var mainPanel = document.getElementById('mainPanel');
             mainPanel.innerHTML = '<ul class="list-group"><li class="list-group-item">אין קבצים</li>';
         }
     });
