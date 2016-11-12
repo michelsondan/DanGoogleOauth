@@ -219,6 +219,7 @@ var captureSuccess = function (mediaFiles) {
 };
 
 var curId;
+var my_media;
 
 function setCurFile(id) {
     alert(id);
@@ -227,11 +228,15 @@ function setCurFile(id) {
 
 function playAudio() {
     if (curId != null) {
-        var my_media = new Media('https://drive.google.com/uc?export=download&id=' + curId, function () { },
+        my_media = new Media('https://drive.google.com/uc?export=download&id=' + curId, function () { },
                 // error callback 
                 function (err) { alert(err) });
         my_media.play();
     }
+}
+
+function stopAudio() {
+    my_media.stop();
 }
 
 // capture error callback
