@@ -96,7 +96,7 @@ function loadFolder(folderID) {
                 var file = files[i];
                 if (!file.explicitlyTrashed) {
                     //alert(file.title + ' (' + file.id + ') - ' + file.embedLink);
-                    s += ('<li class="list-group-item">' + file.title + '&nbsp;&nbsp;<button type="button" class="btn btn-default btn-lg" onclick=playAudio("' + file.id + '");> <span class="glyphicon glyphicon-headphones" aria-hidden="true"></span> רוץ</button></li>');
+                    s += ('<a href="#" class="list-group-item">' + file.title + '</a>');
                 }
             }
             s += '</ul>';
