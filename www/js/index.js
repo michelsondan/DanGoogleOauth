@@ -220,10 +220,14 @@ var captureSuccess = function (mediaFiles) {
 
 var curId;
 var my_media;
+var lastItem;
 
-function setCurFile(id) {
-    this.className = 'list-group-item active';
+function setCurFile(item, id) {
+    if (lastItem != null)
+        lastItem.className = 'list-group-item';
+    item.className = 'list-group-item active';
     curId = id;
+    lastItem = item;
 }
 
 function playAudio() {
