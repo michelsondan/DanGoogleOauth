@@ -96,7 +96,7 @@ function loadFolder(folderID) {
                 var file = files[i];
                 if (!file.explicitlyTrashed) {
                     //alert(file.title + ' (' + file.id + ') - ' + file.embedLink);
-                    s += ('<a href="#" class="list-group-item" onclick="curId=file.id;">' + file.title + '</a>');
+                    s += ('<a href="#" class="list-group-item" onclick=setCurFile("' + file.id + '");>' + file.title + '</a>');
                 }
             }
             s += '</ul>';
@@ -219,6 +219,12 @@ var captureSuccess = function (mediaFiles) {
 };
 
 var curId;
+
+function setCurFile(id) {
+    alert(id);
+    curId = id;
+}
+
 function playAudio() {
     if (curId != null) {
         var my_media = new Media('https://drive.google.com/uc?export=download&id=' + curId, function () { },
