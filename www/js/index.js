@@ -96,7 +96,7 @@ function loadFolder(folderID) {
                 var file = files[i];
                 if (!file.explicitlyTrashed) {
                     //alert(file.title + ' (' + file.id + ') - ' + file.embedLink);
-                    s += ('<a href="#" class="list-group-item">' + file.title + '</a>');
+                    s += ('<a href="#" class="list-group-item" onclick="curId=file.id;">' + file.title + '</a>');
                 }
             }
             s += '</ul>';
@@ -218,11 +218,14 @@ var captureSuccess = function (mediaFiles) {
     }
 };
 
-function playAudio(id) {
-    var my_media = new Media('https://drive.google.com/uc?export=download&id=' + id, function () { },
-            // error callback 
-            function (err) { alert(err) });
-    my_media.play();
+var curId;
+function playAudio() {
+    if (curId != null) {
+        var my_media = new Media('https://drive.google.com/uc?export=download&id=' + curId, function () { },
+                // error callback 
+                function (err) { alert(err) });
+        my_media.play();
+    }
 }
 
 // capture error callback
