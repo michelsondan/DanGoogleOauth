@@ -96,7 +96,7 @@ function loadFolder(folderID) {
                 var file = files[i];
                 if (!file.explicitlyTrashed) {
                     //alert(file.title + ' (' + file.id + ') - ' + file.embedLink);
-                    s += ('<a href="#" class="list-group-item" onclick=setCurFile(this."' + file.id + '");>' + file.title + '</a>');
+                    s += ('<a href="#" class="list-group-item" onclick=setCurFile(this,"' + file.id + '");>' + file.title + '</a>');
                 }
             }
             s += '</ul>';
