@@ -223,7 +223,7 @@ var my_media;
 var lastItem;
 
 function setCurFile(item, id) {
-    aler(item);
+    alert(item);
     alert(id);
     if (lastItem != null)
         lastItem.className = 'list-group-item';
