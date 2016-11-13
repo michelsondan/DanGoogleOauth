@@ -104,13 +104,23 @@ function loadFolder(folderID) {
                         jsonfile.files.push({ id: file.id, title: file.title, folderId: null });                        
                     }
                     else if (file.mimeType && file.mimeType.indexOf('folder') >= 0) {
-                        alert('folder');
                         jsonfile.folders.push({ id: file.id, title: file.title });
                     }
                 }
             }
             for (var i = 0; i < jsonfile.files.length; i++) {
-                s += ('<a href="#" class="list-group-item" onclick=setCurFile(this,"' + jsonfile.files[i].id + '");>' + jsonfile.files[i].title + '</a>');
+                var schilds = '';
+                for (var j = 0; j < jsonfile.folders.length; j++) {
+                    if (jsonfile.files[i].title == jsonfile.folders[j].title) {
+                        schilds += ('<a href="#" class="list-group-item" onclick=setCurFile(this,"' + jsonfile.folders[j].id + '");>' + jsonfile.folders[j].title + '</a>');
+                    }
+                }
+                if (schilds == '') {
+                    s += ('<a href="#" class="list-group-item" onclick=setCurFile(this,"' + jsonfile.files[i].id + '");>' + jsonfile.files[i].title + '</a>');
+                }
+                else {
+                    s += ('<a href="#" class="list-group-item" onclick=setCurFile(this,"' + jsonfile.files[i].id + '");>' + jsonfile.files[i].title + '<ul class="list-group">' + schilds + '</ul></a>');
+                }
             }
             s += '</ul>';
             var mainPanel = document.getElementById('mainPanel');
