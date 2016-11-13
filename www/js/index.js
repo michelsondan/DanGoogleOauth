@@ -260,8 +260,8 @@ function focusFolder(id) {
     limenu.className = "active";
     if (lastlimenu) {
         lastlimenu.className = "";
-        lastlimenu = limenu;
     }
+    lastlimenu = limenu;
 }
 
 $("#folder1").click(function () {
