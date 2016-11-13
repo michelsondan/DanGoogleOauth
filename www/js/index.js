@@ -39,6 +39,7 @@
                     redirect_uri: options.redirect_uri,
                     grant_type: 'authorization_code'
                 }).done(function (data) {
+                    document.getElementById("txtToken").value = data.access_token;
                     gapi.auth.setToken({
                         access_token: data.access_token
                     });
