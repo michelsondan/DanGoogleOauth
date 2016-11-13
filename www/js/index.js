@@ -251,23 +251,33 @@ var captureError = function (error) {
     navigator.notification.alert('Error code: ' + error.code, null, 'Capture Error');
 };
 
+function focusFolder(id) {
+    var txtCurFolderCntrl = document.getElementById('txtCurFolder');
+    var menu = document.getElementById(id);
+    txtCurFolderCntrl.value = menu.innerText;
+}
 
 $("#folder1").click(function () {
+    focusFolder('folder1');
     loadFolder('0BxOZ7Vr1rW6NWlFibXNhM0dZRW8');
 });
 
 $("#folder2").click(function () {
+    focusFolder('folder2');
     loadFolder('0BxOZ7Vr1rW6NMEk1YU5ab3pZa2M');
 });
 
 $("#folder3").click(function () {
+    focusFolder('folder3');
     loadFolder('0BxOZ7Vr1rW6NdkY4T2Vfam1obkk');
 });
 
 $("#folder4").click(function () {
+    focusFolder('folder4');
     loadFolder('0BxOZ7Vr1rW6NQWpCU19BdF9zVXc');
 });
 
 $("#folder5").click(function () {
+    focusFolder('folder5');
     loadFolder('0BxOZ7Vr1rW6NLXBDaHNTV00ySG8');
 });
