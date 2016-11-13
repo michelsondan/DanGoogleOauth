@@ -256,12 +256,13 @@ function focusFolder(id) {
     var txtCurFolderCntrl = document.getElementById('txtCurFolder');
     var menu = document.getElementById(id);
     var limenu = document.getElementById('li' + id);
-    txtCurFolderCntrl.innerText = menu.innerText;
-    limenu.className = "active";
+    txtCurFolderCntrl.innerText = menu.innerText;  
     if (lastlimenu) {
         lastlimenu.className = "";
     }
     lastlimenu = limenu;
+
+    limenu.className = "active";
 }
 
 $("#folder1").click(function () {
