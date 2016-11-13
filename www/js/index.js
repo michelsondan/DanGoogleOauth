@@ -112,7 +112,7 @@ function loadFolder(folderID) {
                 var schilds = '';
                 for (var j = 0; j < jsonfile.folders.length; j++) {
                     if (jsonfile.files[i].title == jsonfile.folders[j].title) {
-                        schilds += ('<a href="#" class="list-group-item" onclick=setCurFile(this,"' + jsonfile.folders[j].id + '");>' + jsonfile.folders[j].title + '</a>');
+                        schilds += ('<a href="#" class="list-group-item list-group-item-success" onclick=setCurFile(this,"' + jsonfile.folders[j].id + '");>' + jsonfile.folders[j].title + '</a>');
                     }
                 }
                 if (schilds == '') {
