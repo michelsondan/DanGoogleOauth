@@ -93,14 +93,24 @@ function loadFolder(folderID) {
         var files = resp.items;
         if (files && files.length > 0) {
             var s = '<ul class="list-group">';
+            var jsonfile = { files: [], folders: [] };
+
             for (var i = 0; i < files.length; i++) {
                 var file = files[i];
+
                 if (!file.explicitlyTrashed) {
                     //alert(file.title + ' (' + file.id + ') - ' + file.embedLink);
                     if (file.fileExtension && (file.fileExtension == 'm4a' || file.fileExtension == 'mp3')) {
-                        s += ('<a href="#" class="list-group-item" onclick=setCurFile(this,"' + file.id + '");>' + file.title + '</a>');
+                        jsonfile.files.push({ id: file.id, title: file.title, folderId: null });                        
+                    }
+                    else if (file.mimeType && file.mimeType.indexOf('folder') >= 0) {
+                        alert('folder');
+                        jsonfile.folders.push({ id: file.id, title: file.title });
                     }
                 }
+            }
+            for (var i = 0; i < jsonfile.files.length; i++) {
+                s += ('<a href="#" class="list-group-item" onclick=setCurFile(this,"' + jsonfile.files[i].id + '");>' + jsonfile.files[i].title + '</a>');
             }
             s += '</ul>';
             var mainPanel = document.getElementById('mainPanel');
