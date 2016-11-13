@@ -253,20 +253,13 @@ var captureError = function (error) {
 
 var lastlimenu;
 function focusFolder(id) {
-    alert(id);
     var txtCurFolderCntrl = document.getElementById('txtCurFolder');
-    alert(txtCurFolderCntrl);
     var menu = document.getElementById(id);
-    alert(menu);
     var limenu = document.getElementById('li' + id);
-    alert(limenu);
     txtCurFolderCntrl.innerText = menu.innerText;
-    alert(txtCurFolderCntrl.innerText);
     if (lastlimenu) {
-        alert(lastlimenu);
         lastlimenu.className = "";
     }
-    alert('ok');
     lastlimenu = limenu;
 
     limenu.className = "active";
