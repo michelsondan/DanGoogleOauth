@@ -254,7 +254,7 @@ var captureError = function (error) {
 function focusFolder(id) {
     var txtCurFolderCntrl = document.getElementById('txtCurFolder');
     var menu = document.getElementById(id);
-    txtCurFolderCntrl.value = menu.innerText;
+    txtCurFolderCntrl.innerText = menu.innerText;
 }
 
 $("#folder1").click(function () {
