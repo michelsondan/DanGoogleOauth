@@ -251,10 +251,17 @@ var captureError = function (error) {
     navigator.notification.alert('Error code: ' + error.code, null, 'Capture Error');
 };
 
+var lastlimenu;
 function focusFolder(id) {
     var txtCurFolderCntrl = document.getElementById('txtCurFolder');
     var menu = document.getElementById(id);
+    var limenu = document.getElementById('li' + id);
     txtCurFolderCntrl.innerText = menu.innerText;
+    limenu.className = "active";
+    if (lastlimenu) {
+        lastlimenu.className = "";
+        lastlimenu = limenu;
+    }
 }
 
 $("#folder1").click(function () {
