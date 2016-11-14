@@ -171,14 +171,14 @@ function checkIfAllAnswersDone() {
             var schilds = '';
             if (jsonfiles.files[i].answers && jsonfiles.files[i].answers.length > 0) {
                 for (var j = 0; j < jsonfiles.files[i].answers.length; j++) {
-                    schilds += ('<a href="#" class="list-group-item list-group-item-success" onclick=setCurFile(this,"' + jsonfiles.files[i].answers[j].id + '");>' + jsonfiles.files[i].answers[j].title + '</a>');
+                    schilds += ('<a href="#" class="list-group-item list-group-item-success" onclick=setCurFile(this,"' + jsonfiles.files[i].answers[j].id + '", -1);>' + jsonfiles.files[i].answers[j].title + '</a>');
                 }
             }
             if (schilds == '') {
-                s += ('<a href="#" class="list-group-item" onclick=setCurFile(this,"' + jsonfiles.files[i].id + '");>' + jsonfiles.files[i].title + '</a>');
+                s += ('<a href="#" class="list-group-item" onclick=setCurFile(this,"' + jsonfiles.files[i].id + '",' + i + ');>' + jsonfiles.files[i].title + '</a>');
             }
             else {
-                s += ('<a href="#" class="list-group-item" onclick=setCurFile(this,"' + jsonfiles.files[i].id + '");>' + jsonfiles.files[i].title + '<ul class="list-group">' + schilds + '</ul></a>');
+                s += ('<a href="#" class="list-group-item" onclick=setCurFile(this,"' + jsonfiles.files[i].id + '",' + i + ');>' + jsonfiles.files[i].title + '<ul class="list-group">' + schilds + '</ul></a>');
             }
         }
         s += '</ul>';
@@ -238,7 +238,7 @@ function insertFile(base64Image, callback) {
     var metadata = {
         'title': fileObject.name,
         'mimeType': contentType,
-        'parents': [{ 'id': '0BxOZ7Vr1rW6NWlFibXNhM0dZRW8' }]
+        'parents': [{ 'id': jsonfiles.files[curjsonindex].folderId }]
     };
 
     var multipartRequestBody =
@@ -252,8 +252,6 @@ function insertFile(base64Image, callback) {
         base64Image +
         close_delim;
 
-    alert(multipartRequestBody);
-
     var request = gapi.client.request({
         'path': '/upload/drive/v2/files',
         'method': 'POST',
@@ -266,15 +264,11 @@ function insertFile(base64Image, callback) {
 
     if (!callback) {
         callback = function (file) {
-            alert('תמונה עלתה');
+            alert('הקלטה עלתה');
         };
     }
 
     request.execute(callback);
-}
-
-function Rec() {
-    navigator.device.capture.captureAudio(captureSuccess, captureError);
 }
 
 // capture callback
@@ -299,13 +293,15 @@ var captureSuccess = function (mediaFiles) {
 var curId;
 var my_media;
 var lastItem;
+var curjsonindex;
 
-function setCurFile(item, id) {
+function setCurFile(item, id, jsonindex) {
     if (lastItem != null)
         lastItem.className = 'list-group-item';
     item.className = 'list-group-item active';
     curId = id;
     lastItem = item;
+    curjsonindex = jsonindex;
 }
 
 function playAudio() {
@@ -341,6 +337,20 @@ function playAudioAfterForceSharing() {
 
 function stopAudio() {
     my_media.stop();
+}
+
+function recAudio() {
+    if (curjsonindex) {
+        if (curjsonindex >= 0) {
+            navigator.device.capture.captureAudio(captureSuccess, captureError);
+        }
+        else {
+            alert('נא לבחור קובץ');
+        }
+    }
+    else {
+        alert('נא לבחור קובץ');
+    }
 }
 
 // capture error callback
