@@ -139,7 +139,9 @@ function loadAnswers(folderID, question) {
                 if (!file.explicitlyTrashed) {
                     //alert(file.title + ' (' + file.id + ') - ' + file.embedLink);
                     if (file.fileExtension && (file.fileExtension == 'm4a' || file.fileExtension == 'mp3')) {
+                        alert('pushA');
                         question.answers.push({ id: file.id, title: file.title });
+                        alert(question.answers);
                     }
                 }
             }
