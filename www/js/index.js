@@ -296,6 +296,7 @@ var lastItem;
 var curjsonindex;
 
 function setCurFile(item, id, jsonindex) {
+    alert('ok'); alert(jsonindex);
     if (lastItem != null)
         lastItem.className = 'list-group-item';
     item.className = 'list-group-item active';
