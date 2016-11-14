@@ -333,7 +333,7 @@ function wordMode() {
 
 function soundMode() {
     document.getElementById("btnPlay").style.visibility = 'visible';
-    document.getElementById("btnStop").style.visibility = 'visible';
+    document.getElementById("btnStop").style.visibility = 'hidden';
     document.getElementById("btnRecord").style.visibility = 'visible';
     document.getElementById("btnWord").style.visibility = 'hidden';
 }
@@ -383,10 +383,12 @@ function playStatus(status) {
         case 2:
             document.getElementById('btnPlay').style.visibility = 'hidden';
             document.getElementById('btnRecord').style.visibility = 'hidden';
+            document.getElementById('btnStop').style.visibility = 'visible';
             break;
         case 4:
             document.getElementById('btnPlay').style.visibility = 'visible';
             document.getElementById('btnRecord').style.visibility = 'visible';
+            document.getElementById('btnStop').style.visibility = 'hidden';
             break;
     }
 }
