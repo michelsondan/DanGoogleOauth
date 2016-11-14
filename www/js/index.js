@@ -327,7 +327,7 @@ function setCurFile(item, id, jsonindex, jsonansindex) {
 function wordMode() {
     document.getElementById("btnPlay").style.visibility = 'hidden';
     document.getElementById("btnStop").style.visibility = 'hidden';
-    document.getElementById("btnRecord").style.visibility = 'hidden';
+    document.getElementById("btnRecord").style.visibility = 'visible';
     document.getElementById("btnWord").style.visibility = 'visible';
 }
 
