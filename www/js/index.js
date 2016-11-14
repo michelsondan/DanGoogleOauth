@@ -100,17 +100,22 @@ function loadFolder(folderID) {
                 if (!file.explicitlyTrashed) {
                     //alert(file.title + ' (' + file.id + ') - ' + file.embedLink);
                     if (file.fileExtension && (file.fileExtension == 'm4a' || file.fileExtension == 'mp3')) {
+                        alert('pushQ');
                         jsonfiles.files.push({ id: file.id, title: file.title, folderId: null, folderChecked: false, answers: [] });
+                        alert('pushQDone');
                     }
                     else if (file.mimeType && file.mimeType.indexOf('folder') >= 0) {
+                        alert('pushF');
                         jsonfiles.folders.push({ id: file.id, title: file.title });
+                        alert('pushFDone');
                     }
                 }
             }
-
+            alert('checkfiles');
             for (var i = 0; i < jsonfile.files.length; i++) {
                 for (var j = 0; j < jsonfile.folders.length; j++) {
                     if (jsonfile.files[i].title == jsonfile.folders[j].title) {
+                        alert('pushloadA');
                         loadAnswers(jsonfiles.folders[j].id, jsonfiles.files[i]);
                         break;
                     }
