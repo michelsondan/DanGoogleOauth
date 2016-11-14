@@ -312,7 +312,7 @@ function playAudio() {
     if (curId != null) {
         my_media = new Media('https://drive.google.com/uc?export=download&id=' + curId, function () { },
                 // error callback 
-                function (err) { alert(err) });
+                function (err) { alert(err.message) });
         my_media.play();
     }
 }
