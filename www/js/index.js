@@ -84,6 +84,8 @@ function driveloaded() {
 function onDriveClientLoaded(folderID) {
 }
 
+var jsonfiles = { files: [], folders: [] };
+
 function loadFolder(folderID) {
     var request = gapi.client.drive.files.list({
         'q': '"' + folderID + '" in parents'
@@ -92,44 +94,90 @@ function loadFolder(folderID) {
     request.execute(function (resp) {
         var files = resp.items;
         if (files && files.length > 0) {
-            var s = '<ul class="list-group">';
-            var jsonfile = { files: [], folders: [] };
-
             for (var i = 0; i < files.length; i++) {
                 var file = files[i];
 
                 if (!file.explicitlyTrashed) {
                     //alert(file.title + ' (' + file.id + ') - ' + file.embedLink);
                     if (file.fileExtension && (file.fileExtension == 'm4a' || file.fileExtension == 'mp3')) {
-                        jsonfile.files.push({ id: file.id, title: file.title, folderId: null });                        
+                        jsonfiles.files.push({ id: file.id, title: file.title, folderId: null, folderChecked: false, answers: [] });
                     }
                     else if (file.mimeType && file.mimeType.indexOf('folder') >= 0) {
-                        jsonfile.folders.push({ id: file.id, title: file.title });
+                        jsonfiles.folders.push({ id: file.id, title: file.title });
                     }
                 }
             }
+
             for (var i = 0; i < jsonfile.files.length; i++) {
-                var schilds = '';
                 for (var j = 0; j < jsonfile.folders.length; j++) {
                     if (jsonfile.files[i].title == jsonfile.folders[j].title) {
-                        schilds += ('<a href="#" class="list-group-item list-group-item-success" onclick=setCurFile(this,"' + jsonfile.folders[j].id + '");>' + jsonfile.folders[j].title + '</a>');
+                        loadAnswers(jsonfiles.folders[j].id, jsonfiles.files[i]);
+                        break;
                     }
                 }
-                if (schilds == '') {
-                    s += ('<a href="#" class="list-group-item" onclick=setCurFile(this,"' + jsonfile.files[i].id + '");>' + jsonfile.files[i].title + '</a>');
-                }
-                else {
-                    s += ('<a href="#" class="list-group-item" onclick=setCurFile(this,"' + jsonfile.files[i].id + '");>' + jsonfile.files[i].title + '<ul class="list-group">' + schilds + '</ul></a>');
-                }
             }
-            s += '</ul>';
-            var mainPanel = document.getElementById('mainPanel');
-            mainPanel.innerHTML = s;
         } else {
             var mainPanel = document.getElementById('mainPanel');
-            mainPanel.innerHTML = '<ul class="list-group"><li class="list-group-item">אין קבצים</li>';
+            mainPanel.innerHTML = '<ul class="list-group"><li class="list-group-item">אין קבצים</li></ul>';
         }
     });
+}
+
+function loadAnswers(folderID, question) {
+    var request = gapi.client.drive.files.list({
+        'q': '"' + folderID + '" in parents'
+    });
+
+    request.execute(function (resp) {
+        var files = resp.items;
+        if (files && files.length > 0) {
+            for (var i = 0; i < files.length; i++) {
+                var file = files[i];
+
+                if (!file.explicitlyTrashed) {
+                    //alert(file.title + ' (' + file.id + ') - ' + file.embedLink);
+                    if (file.fileExtension && (file.fileExtension == 'm4a' || file.fileExtension == 'mp3')) {
+                        question.answers.push({ id: file.id, title: file.title });
+                    }
+                }
+            }
+            question.folderChecked = true;
+            checkIfAllAnswersDone();
+        }
+    });
+}
+
+function checkIfAllAnswersDone() {
+    var done = true;
+    for (var i = 0 ; i < jsonfiles.files.length; i++) {
+        if (jsonfiles.files[i].folderId) {
+            if (jsonfiles.files[i].folderChecked == false) {
+                done = false;
+                break;
+            }
+        }
+    }
+
+    if (done == true) {
+        var s = '<ul class="list-group">';
+        for (var i = 0; i < jsonfile.files.length; i++) {
+            var schilds = '';
+            if (jsonfiles.files[i].answers && jsonfiles.files[i].answers.length > 0) {
+                for (var j = 0; j < jsonfile.answers.length; j++) {
+                    schilds += ('<a href="#" class="list-group-item list-group-item-success" onclick=setCurFile(this,"' + jsonfile.answers[j].id + '");>' + jsonfile.answers[j].title + '</a>');
+                }
+            }
+            if (schilds == '') {
+                s += ('<a href="#" class="list-group-item" onclick=setCurFile(this,"' + jsonfile.files[i].id + '");>' + jsonfile.files[i].title + '</a>');
+            }
+            else {
+                s += ('<a href="#" class="list-group-item" onclick=setCurFile(this,"' + jsonfile.files[i].id + '");>' + jsonfile.files[i].title + '<ul class="list-group">' + schilds + '</ul></a>');
+            }
+        }
+        s += '</ul>';
+        var mainPanel = document.getElementById('mainPanel');
+        mainPanel.innerHTML = s;
+    }
 }
 
 function Cap() {
