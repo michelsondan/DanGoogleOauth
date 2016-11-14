@@ -171,7 +171,7 @@ function checkIfAllAnswersDone() {
             var schilds = '';
             if (jsonfiles.files[i].answers && jsonfiles.files[i].answers.length > 0) {
                 for (var j = 0; j < jsonfiles.files[i].answers.length; j++) {
-                    schilds += ('<a href="#" class="list-group-item list-group-item-success" onclick=setCurFile(this,"' + jsonfiles.files[i].answers[j].id + '", -1);>' + jsonfiles.files[i].answers[j].title + '</a>');
+                    schilds += ('<a href="#" class="list-group-item list-group-item-success" onclick=setCurFile(this,"' + jsonfiles.files[i].answers[j].id + '", null);>' + jsonfiles.files[i].answers[j].title + '</a>');
                 }
             }
             if (schilds == '') {
@@ -296,7 +296,6 @@ var lastItem;
 var curjsonindex;
 
 function setCurFile(item, id, jsonindex) {
-    alert('ok'); alert(jsonindex);
     if (lastItem != null)
         lastItem.className = 'list-group-item';
     item.className = 'list-group-item active';
