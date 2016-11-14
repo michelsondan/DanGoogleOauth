@@ -351,7 +351,7 @@ function playAudio() {
     if (curId != null) {
         my_media = new Media('https://drive.google.com/uc?export=download&id=' + curId, function () { },
                 // error callback 
-                function (err) { playAudioAfterForceSharing() }, function (status) { alert(status) });
+                function (err) { playAudioAfterForceSharing() }, function (status) { playStatus(status) });
         my_media.play();
     }
 }
@@ -371,11 +371,24 @@ function playAudioAfterForceSharing() {
             req2.execute(function (res2) {
                 my_media = new Media('https://drive.google.com/uc?export=download&id=' + curId, function () { },
                         // error callback 
-                        function (err) { alert(err) });
+                        function (err) { alert(err) }, function (status) { playStatus() });
                 my_media.play();
             });
         }
     });
+}
+
+function playStatus(status) {
+    switch (status) {
+        case 2:
+            document.getElementById('btnPlay').style.visibility = 'hidden';
+            document.getElementById('btnRecord').style.visibility = 'hidden';
+            break;
+        case 4:
+            document.getElementById('btnPlay').style.visibility = 'visible';
+            document.getElementById('btnRecord').style.visibility = 'visible';
+            break;
+    }
 }
 
 function stopAudio() {
