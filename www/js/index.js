@@ -78,8 +78,6 @@ $(document).on('deviceready', function () {
 });
 
 function driveloaded() {
-    var authWindow = window.open('https://drive.google.com/open?id=0BxAG_aZalNlPNDZkUmp4aWQ0Z3M', '_blank', 'location=yes,toolbar=yes');
-
 }
 
 function onDriveClientLoaded(folderID) {
@@ -375,7 +373,7 @@ function recAudio() {
 }
 
 function openWord() {
-
+    var authWindow = window.open('https://drive.google.com/open?id=0BxAG_aZalNlPNDZkUmp4aWQ0Z3M', '_blank', 'location=yes,toolbar=yes');
 }
 
 // capture error callback
