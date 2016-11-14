@@ -15,13 +15,26 @@
 
 
             gapi.auth.setToken({
-                access_token: 'ya29.Ci-WA_ho-HetGMNtO7mgXXRiDXxTzTOWOaoulBQ3ZwR8GwhuYQrjl8vMs9ScyVAVQA'
+                access_token: 'ya29.Ci-WA2341tYDR47jBDeB46jhF1XJkz1n9jlOdojZUsP46Oj0vL05t2DMtrexr_NyGQ'
             });
 
             gapi.client.load('drive', 'v2', onDriveClientLoaded);
         }
 
+        function createFolder() {
+            data = new Object();
+            data.title = 'שם חדש.mp3';
+            data.parents = [{ "id": "0BxOZ7Vr1rW6NWlFibXNhM0dZRW8" }];
+            data.mimeType = "application/vnd.google-apps.folder";
+            gapi.client.drive.files.insert({ 'resource': data }).execute(function (fileList)
+            {
+                alert(fileList);
+            });
+        }
+
         function onDriveClientLoaded() {
+            //createFolder();
+            //return;
             var request = gapi.client.drive.files.list({
                 'q': '"0BxOZ7Vr1rW6NWlFibXNhM0dZRW8" in parents'
             });

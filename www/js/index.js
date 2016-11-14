@@ -345,6 +345,7 @@ function stopAudio() {
 }
 
 function recAudio() {
+    alert(curjsonindex);
     if (curjsonindex) {
         if (curjsonindex >= 0) {
             navigator.device.capture.captureAudio(captureSuccess, captureError);
