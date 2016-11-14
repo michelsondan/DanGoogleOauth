@@ -139,9 +139,7 @@ function loadAnswers(folderID, question) {
                 if (!file.explicitlyTrashed) {
                     //alert(file.title + ' (' + file.id + ') - ' + file.embedLink);
                     if (file.fileExtension && (file.fileExtension == 'm4a' || file.fileExtension == 'mp3')) {
-                        alert('pushA');
                         question.answers.push({ id: file.id, title: file.title });
-                        alert(question.answers);
                     }
                 }
             }
@@ -172,7 +170,8 @@ function checkIfAllAnswersDone() {
         for (var i = 0; i < jsonfiles.files.length; i++) {
             var schilds = '';
             if (jsonfiles.files[i].answers && jsonfiles.files[i].answers.length > 0) {
-                for (var j = 0; j < jsonfiles.answers.length; j++) {
+                alert('yes!');
+                for (var j = 0; j < jsonfiles.files[i].answers.length; j++) {
                     schilds += ('<a href="#" class="list-group-item list-group-item-success" onclick=setCurFile(this,"' + jsonfiles.answers[j].id + '");>' + jsonfiles.answers[j].title + '</a>');
                 }
             }
