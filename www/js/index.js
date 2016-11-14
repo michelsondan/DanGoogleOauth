@@ -267,6 +267,7 @@ function insertFile(base64Image, callback) {
     if (!callback) {
         callback = function (file) {
             alert('הקלטה עלתה');
+            loadFolder(mainFolderId);
         };
     }
 
