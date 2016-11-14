@@ -88,6 +88,8 @@ var jsonfiles;
 
 function loadFolder(folderID) {
     jsonfiles = { files: [], folders: [] };
+    curjsonindex = null;
+    mainFolderId = folderID;
 
     var request = gapi.client.drive.files.list({
         'q': '"' + folderID + '" in parents'
@@ -347,7 +349,19 @@ function stopAudio() {
 function recAudio() {
     if (curjsonindex != null) {
         if (curjsonindex >= 0) {
-            navigator.device.capture.captureAudio(captureSuccess, captureError);
+            if (jsonfiles.file[curjsonindex].folderId == null) {
+                data = new Object();
+                data.title = jsonfiles.files[curjsonindex].title;
+                data.parents = [{ "id": mainFolderId }];
+                data.mimeType = "application/vnd.google-apps.folder";
+                gapi.client.drive.files.insert({ 'resource': data }).execute(function (fileList) {
+                    jsonfiles.file[curjsonindex].folderId = fileList.id;
+                    navigator.device.capture.captureAudio(captureSuccess, captureError);
+                });
+            }
+            else {
+                navigator.device.capture.captureAudio(captureSuccess, captureError);
+            }
         }
         else {
             alert('נא לבחור קובץ');
@@ -376,6 +390,8 @@ function focusFolder(id) {
 
     limenu.className = "active";
 }
+
+var mainFolderId;
 
 $("#folder1").click(function () {
     focusFolder('folder1');
