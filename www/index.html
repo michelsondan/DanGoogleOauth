@@ -40,13 +40,13 @@
             <div class="navbar-header">
                 <h4><span class="label label-primary" id="txtCurFolder">-</span></h4>
                 &nbsp;
-                <button type="button" class="btn btn-default btn-lg" onclick=playAudio();> <span class="glyphicon glyphicon-headphones" aria-hidden="true"></span> רוץ</button>
+                <button id="btnPlay" type="button" class="btn btn-default btn-lg" onclick=playAudio();> <span class="glyphicon glyphicon-headphones" aria-hidden="true" style="visibility:hidden;"></span> רוץ</button>
                 &nbsp;
-                <button type="button" class="btn btn-default btn-lg" onclick=stopAudio();> <span class="gglyphicon glyphicon-stop" aria-hidden="true"></span> עצור</button>
+                <button id="btnStop" type="button" class="btn btn-default btn-lg" onclick=stopAudio();> <span class="gglyphicon glyphicon-stop" aria-hidden="true" style="visibility:hidden;"></span> עצור</button>
                 &nbsp;
-                <button type="button" class="btn btn-default btn-lg" onclick=recAudio();> <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> הקלט</button>                
+                <button id="btnRecord" type="button" class="btn btn-default btn-lg" onclick=recAudio();> <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true" style="visibility:hidden;"></span> הקלט</button>                
                 &nbsp;
-                <button type="button" class="btn btn-default btn-lg" onclick=openWord();> <span class="glyphicon glyphicon-text-color" aria-hidden="true"></span> Word</button>                
+                <button id="btnWord" type="button" class="btn btn-default btn-lg" onclick=openWord();> <span class="glyphicon glyphicon-text-color" aria-hidden="true" style="visibility:hidden;"></span> Word</button>                
             </div>
         </nav>
 
@@ -56,7 +56,7 @@
         <input type="text" id="txtToken" style="visibility:collapse" />
 
         <script type="text/javascript" src="cordova.js"></script>
-         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script src="https://apis.google.com/js/client.js?onload=driveloaded"></script>
         <script src="bootstrap/js/bootstrap.min.js"></script>
