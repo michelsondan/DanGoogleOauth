@@ -312,9 +312,31 @@ function playAudio() {
     if (curId != null) {
         my_media = new Media('https://drive.google.com/uc?export=download&id=' + curId, function () { },
                 // error callback 
-                function (err) { alert(err.message) });
+                function (err) { playAudioAfterForceSharing() });
         my_media.play();
     }
+}
+
+function playAudioAfterForceSharing() {
+    var req = gapi.client.drive.permissions.list({ 'fileId': curId });
+    req.execute(function (res) {
+        var rdr = false;
+        for (var t = 0; t < res.result.items.length; t++) {
+            if (res.result.items[t].role == 'reader') {
+                rdr = true;
+                break;
+            }
+        }
+        if (!rdr) {
+            var req2 = gapi.client.drive.permissions.insert({ 'fileId': curId, resource: { 'withLink': true, 'type': 'anyone', 'role': 'reader', 'value': 'default' } });
+            req2.execute(function (res2) {
+                my_media = new Media('https://drive.google.com/uc?export=download&id=' + curId, function () { },
+                        // error callback 
+                        function (err) { alert(err) });
+                my_media.play();
+            });
+        }
+    });
 }
 
 function stopAudio() {
