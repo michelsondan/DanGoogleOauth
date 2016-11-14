@@ -347,12 +347,9 @@ function stopAudio() {
 }
 
 function recAudio() {
-    alert(mainFolderId);
-    alert(curjsonindex);
-
     if (curjsonindex != null) {
         if (curjsonindex >= 0) {
-            if (jsonfiles.file[curjsonindex].folderId == null) {
+            if (jsonfiles.files[curjsonindex].folderId == null) {
                 alert('ok');
                 var data = new Object();
                 alert(data);
