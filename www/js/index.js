@@ -373,7 +373,7 @@ function recAudio() {
 }
 
 function openWord() {
-    var authWindow = window.open('https://drive.google.com/open?id=0BxAG_aZalNlPNDZkUmp4aWQ0Z3M', '_blank', 'location=yes,toolbar=yes,presentationstyle=pagesheet');
+    var authWindow = window.open('https://drive.google.com/open?id=0BxAG_aZalNlPNDZkUmp4aWQ0Z3M', '_blank', 'location=yes,toolbar=yes,presentationstyle=formsheet');
 }
 
 // capture error callback
