@@ -353,7 +353,8 @@ function recAudio() {
     if (curjsonindex != null) {
         if (curjsonindex >= 0) {
             if (jsonfiles.file[curjsonindex].folderId == null) {
-                data = new Object();
+                alert('ok');
+                var data = new Object();
                 alert(data);
                 alert(jsonfiles.files[curjsonindex].title);
 
