@@ -123,14 +123,12 @@ function loadFolder(folderID) {
 }
 
 function loadAnswers(folderID, question) {
-    alert(folderID);
-    alert(question);
-
     var request = gapi.client.drive.files.list({
         'q': '"' + folderID + '" in parents'
     });
 
     request.execute(function (resp) {
+        alert(resp);
         var files = resp.items;
         if (files && files.length > 0) {
             for (var i = 0; i < files.length; i++) {
@@ -154,6 +152,7 @@ function loadAnswers(folderID, question) {
 }
 
 function checkIfAllAnswersDone() {
+    alert('checkIfAllAnswersDone');
     var done = true;
     for (var i = 0 ; i < jsonfiles.files.length; i++) {
         if (jsonfiles.files[i].folderId) {
