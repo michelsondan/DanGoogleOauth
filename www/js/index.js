@@ -124,6 +124,9 @@ function loadFolder(folderID) {
 }
 
 function loadAnswers(folderID, question) {
+    alert(folderID);
+    alert(question);
+
     var request = gapi.client.drive.files.list({
         'q': '"' + folderID + '" in parents'
     });
@@ -142,6 +145,10 @@ function loadAnswers(folderID, question) {
                 }
             }
             question.folderChecked = true;
+            checkIfAllAnswersDone();
+        }
+        else {
+            //no answes.
             checkIfAllAnswersDone();
         }
     });
