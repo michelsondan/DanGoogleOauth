@@ -347,10 +347,16 @@ function stopAudio() {
 }
 
 function recAudio() {
+    alert(mainFolderId);
+    alert(curjsonindex);
+
     if (curjsonindex != null) {
         if (curjsonindex >= 0) {
             if (jsonfiles.file[curjsonindex].folderId == null) {
                 data = new Object();
+                alert(data);
+                alert(jsonfiles.files[curjsonindex].title);
+
                 data.title = jsonfiles.files[curjsonindex].title;
                 data.parents = [{ "id": mainFolderId }];
                 data.mimeType = "application/vnd.google-apps.folder";
