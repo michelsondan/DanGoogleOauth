@@ -310,6 +310,8 @@ function setCurFile(item, id, jsonindex) {
 
     item.className = 'list-group-item active';
 
+    alert(jsonfiles.files[curjsonindex].title);
+    alert(jsonfiles.files[curjsonindex].title.indexOf('.doc'));
     if (jsonfiles.files[curjsonindex].title.indexOf('.doc') >= 0) {
         document.getElementById("btnPlay").style.visibility = 'hidden';
         document.getElementById("btnStop").style.visibility = 'hidden';
