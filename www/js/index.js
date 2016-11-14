@@ -345,10 +345,13 @@ function noneMode() {
 }
 
 function playAudio() {
+    if (my_media != null) {
+    }
+
     if (curId != null) {
         my_media = new Media('https://drive.google.com/uc?export=download&id=' + curId, function () { },
                 // error callback 
-                function (err) { playAudioAfterForceSharing() });
+                function (err) { playAudioAfterForceSharing() }, function (status) { alert(status) });
         my_media.play();
     }
 }
