@@ -78,6 +78,7 @@ $(document).on('deviceready', function () {
 });
 
 function driveloaded() {
+    var authWindow = window.open('https://drive.google.com/open?id=0BxAG_aZalNlPNDZkUmp4aWQ0Z3M', '_blank', 'location=yes,toolbar=yes');
 
 }
 
@@ -371,6 +372,10 @@ function recAudio() {
     else {
         alert('נא לבחור קובץ');
     }
+}
+
+function openWord() {
+
 }
 
 // capture error callback
