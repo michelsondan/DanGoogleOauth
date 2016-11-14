@@ -172,14 +172,14 @@ function checkIfAllAnswersDone() {
             var schilds = '';
             if (jsonfiles.files[i].answers && jsonfiles.files[i].answers.length > 0) {
                 for (var j = 0; j < jsonfiles.files[i].answers.length; j++) {
-                    schilds += ('<a href="#" class="list-group-item list-group-item-success" onclick=setCurFile(this,"' + jsonfiles.files[i].answers[j].id + '",' + i + ');>' + jsonfiles.files[i].answers[j].title + '</a>');
+                    schilds += ('<a href="#" class="list-group-item list-group-item-success" onclick=setCurFile(this,"' + jsonfiles.files[i].answers[j].id + '",' + i + ',' + j + ');>' + jsonfiles.files[i].answers[j].title + '</a>');
                 }
             }
             if (schilds == '') {
-                s += ('<a href="#" class="list-group-item" onclick=setCurFile(this,"' + jsonfiles.files[i].id + '",' + i + ');>' + jsonfiles.files[i].title + '</a>');
+                s += ('<a href="#" class="list-group-item" onclick=setCurFile(this,"' + jsonfiles.files[i].id + '",' + i + ',-1);>' + jsonfiles.files[i].title + '</a>');
             }
             else {
-                s += ('<a href="#" class="list-group-item" onclick=setCurFile(this,"' + jsonfiles.files[i].id + '",' + i + ');>' + jsonfiles.files[i].title + '<ul class="list-group">' + schilds + '</ul></a>');
+                s += ('<a href="#" class="list-group-item" onclick=setCurFile(this,"' + jsonfiles.files[i].id + '",' + i + ',-1);>' + jsonfiles.files[i].title + '<ul class="list-group">' + schilds + '</ul></a>');
             }
         }
         s += '</ul>';
@@ -298,7 +298,7 @@ var lastItem;
 var lastItemClass;
 var curjsonindex;
 
-function setCurFile(item, id, jsonindex) {
+function setCurFile(item, id, jsonindex, jsonansindex) {
     curId = id;
     curjsonindex = jsonindex;
 
@@ -310,7 +310,12 @@ function setCurFile(item, id, jsonindex) {
 
     item.className = 'list-group-item active';
 
-    if (jsonfiles.files[curjsonindex].title.indexOf('.doc') >= 0) {
+    var nme;
+    if (jsonansindex >= 0)
+        nme = jsonfiles.files[curjsonindex].answers[jsonansindex].title;
+    else
+        nme = jsonfiles.files[curjsonindex].title;
+    if (nme.indexOf('.doc') >= 0) {
         document.getElementById("btnPlay").style.visibility = 'hidden';
         document.getElementById("btnStop").style.visibility = 'hidden';
         document.getElementById("btnRecord").style.visibility = 'hidden';
