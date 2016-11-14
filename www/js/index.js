@@ -84,9 +84,11 @@ function driveloaded() {
 function onDriveClientLoaded(folderID) {
 }
 
-var jsonfiles = { files: [], folders: [] };
+var jsonfiles;
 
 function loadFolder(folderID) {
+    jsonfiles = { files: [], folders: [] };
+
     var request = gapi.client.drive.files.list({
         'q': '"' + folderID + '" in parents'
     });
@@ -162,8 +164,6 @@ function checkIfAllAnswersDone() {
             }
         }
     }
-
-    alert(done);
 
     if (done == true) {
         var s = '<ul class="list-group">';
