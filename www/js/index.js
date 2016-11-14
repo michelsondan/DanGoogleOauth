@@ -110,6 +110,7 @@ function loadFolder(folderID) {
             for (var i = 0; i < jsonfiles.files.length; i++) {
                 for (var j = 0; j < jsonfiles.folders.length; j++) {
                     if (jsonfiles.files[i].title == jsonfiles.folders[j].title) {
+                        jsonfiles.files[i].folderId = jsonfiles.folders[j].id;
                         loadAnswers(jsonfiles.folders[j].id, jsonfiles.files[i]);
                         break;
                     }
@@ -128,7 +129,6 @@ function loadAnswers(folderID, question) {
     });
 
     request.execute(function (resp) {
-        alert(resp);
         var files = resp.items;
         if (files && files.length > 0) {
             for (var i = 0; i < files.length; i++) {
@@ -163,20 +163,22 @@ function checkIfAllAnswersDone() {
         }
     }
 
+    alert(done);
+
     if (done == true) {
         var s = '<ul class="list-group">';
-        for (var i = 0; i < jsonfile.files.length; i++) {
+        for (var i = 0; i < jsonfiles.files.length; i++) {
             var schilds = '';
             if (jsonfiles.files[i].answers && jsonfiles.files[i].answers.length > 0) {
-                for (var j = 0; j < jsonfile.answers.length; j++) {
-                    schilds += ('<a href="#" class="list-group-item list-group-item-success" onclick=setCurFile(this,"' + jsonfile.answers[j].id + '");>' + jsonfile.answers[j].title + '</a>');
+                for (var j = 0; j < jsonfiles.answers.length; j++) {
+                    schilds += ('<a href="#" class="list-group-item list-group-item-success" onclick=setCurFile(this,"' + jsonfiles.answers[j].id + '");>' + jsonfiles.answers[j].title + '</a>');
                 }
             }
             if (schilds == '') {
-                s += ('<a href="#" class="list-group-item" onclick=setCurFile(this,"' + jsonfile.files[i].id + '");>' + jsonfile.files[i].title + '</a>');
+                s += ('<a href="#" class="list-group-item" onclick=setCurFile(this,"' + jsonfiles.files[i].id + '");>' + jsonfiles.files[i].title + '</a>');
             }
             else {
-                s += ('<a href="#" class="list-group-item" onclick=setCurFile(this,"' + jsonfile.files[i].id + '");>' + jsonfile.files[i].title + '<ul class="list-group">' + schilds + '</ul></a>');
+                s += ('<a href="#" class="list-group-item" onclick=setCurFile(this,"' + jsonfiles.files[i].id + '");>' + jsonfiles.files[i].title + '<ul class="list-group">' + schilds + '</ul></a>');
             }
         }
         s += '</ul>';
