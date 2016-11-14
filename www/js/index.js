@@ -350,16 +350,12 @@ function recAudio() {
     if (curjsonindex != null) {
         if (curjsonindex >= 0) {
             if (jsonfiles.files[curjsonindex].folderId == null) {
-                alert('ok');
                 var data = new Object();
-                alert(data);
-                alert(jsonfiles.files[curjsonindex].title);
-
                 data.title = jsonfiles.files[curjsonindex].title;
                 data.parents = [{ "id": mainFolderId }];
                 data.mimeType = "application/vnd.google-apps.folder";
                 gapi.client.drive.files.insert({ 'resource': data }).execute(function (fileList) {
-                    jsonfiles.file[curjsonindex].folderId = fileList.id;
+                    jsonfiles.files[curjsonindex].folderId = fileList.id;
                     navigator.device.capture.captureAudio(captureSuccess, captureError);
                 });
             }
