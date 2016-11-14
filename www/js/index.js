@@ -102,7 +102,7 @@ function loadFolder(folderID) {
 
                 if (!file.explicitlyTrashed) {
                     //alert(file.title + ' (' + file.id + ') - ' + file.embedLink);
-                    if (file.fileExtension && (file.fileExtension == 'm4a' || file.fileExtension == 'mp3')) {
+                    if (file.fileExtension && (file.fileExtension == 'm4a' || file.fileExtension == 'mp3' || file.fileExtension == 'docx' || file.fileExtension == 'doc')) {
                         jsonfiles.files.push({ id: file.id, title: file.title, folderId: null, folderChecked: false, answers: [] });
                     }
                     else if (file.mimeType && file.mimeType.indexOf('folder') >= 0) {
@@ -373,7 +373,7 @@ function recAudio() {
 }
 
 function openWord() {
-    var authWindow = window.open('https://drive.google.com/open?id=0BxAG_aZalNlPNDZkUmp4aWQ0Z3M', '_blank', 'location=no,toolbar=no');
+    var authWindow = window.open('https://drive.google.com/open?id=' + curId, '_blank', 'location=no,toolbar=no');
 }
 
 // capture error callback
