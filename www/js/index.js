@@ -89,6 +89,7 @@ function loadFolder(folderID) {
     jsonfiles = { files: [], folders: [] };
     curjsonindex = null;
     mainFolderId = folderID;
+    noneMode();
 
     var request = gapi.client.drive.files.list({
         'q': '"' + folderID + '" in parents'
@@ -316,17 +317,31 @@ function setCurFile(item, id, jsonindex, jsonansindex) {
     else
         nme = jsonfiles.files[curjsonindex].title;
     if (nme.indexOf('.doc') >= 0) {
-        document.getElementById("btnPlay").style.visibility = 'hidden';
-        document.getElementById("btnStop").style.visibility = 'hidden';
-        document.getElementById("btnRecord").style.visibility = 'hidden';
-        document.getElementById("btnWord").style.visibility = 'visible';
+        wordMode();
     }
     else {
-        document.getElementById("btnPlay").style.visibility = 'visible';
-        document.getElementById("btnStop").style.visibility = 'visible';
-        document.getElementById("btnRecord").style.visibility = 'visible';
-        document.getElementById("btnWord").style.visibility = 'hidden';
+        soundMode();
     }
+}
+
+function wordMode() {
+    document.getElementById("btnPlay").style.visibility = 'hidden';
+    document.getElementById("btnStop").style.visibility = 'hidden';
+    document.getElementById("btnRecord").style.visibility = 'hidden';
+    document.getElementById("btnWord").style.visibility = 'visible';
+}
+
+function soundMode() {
+    document.getElementById("btnPlay").style.visibility = 'visible';
+    document.getElementById("btnStop").style.visibility = 'visible';
+    document.getElementById("btnRecord").style.visibility = 'visible';
+    document.getElementById("btnWord").style.visibility = 'hidden';
+}
+function noneMode() {
+    document.getElementById("btnPlay").style.visibility = 'hidden';
+    document.getElementById("btnStop").style.visibility = 'hidden';
+    document.getElementById("btnRecord").style.visibility = 'hidden';
+    document.getElementById("btnWord").style.visibility = 'hidden';
 }
 
 function playAudio() {
