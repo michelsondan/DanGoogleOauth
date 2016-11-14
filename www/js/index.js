@@ -146,18 +146,16 @@ function loadAnswers(folderID, question) {
         }
         else {
             //no answes.
+            question.folderChecked = true;
             checkIfAllAnswersDone();
         }
     });
 }
 
 function checkIfAllAnswersDone() {
-    alert('checkIfAllAnswersDone');
     var done = true;
     for (var i = 0 ; i < jsonfiles.files.length; i++) {
-        alert(i);
         if (jsonfiles.files[i].folderId) {
-            alert(jsonfiles.files[i].folderId);
             if (jsonfiles.files[i].folderChecked == false) {
                 done = false;
                 break;
