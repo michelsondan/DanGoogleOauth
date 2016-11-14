@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.phonegaptips.googleoauth" version="1.7.8" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>GoogleOauthPhonegap</name>
+<widget id="com.phonegaptips.googleoauth" version="1.7.9" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>GuyStudy</name>
     <description>
-        A sample Apache Cordova application that responds to the deviceready event.
+        Guy Study
     </description>
     <author email="dev@callback.apache.org" href="http://cordova.io">
         Apache Cordova Team
