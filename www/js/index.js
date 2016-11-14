@@ -293,15 +293,20 @@ var captureSuccess = function (mediaFiles) {
 var curId;
 var my_media;
 var lastItem;
+var lastItemClass;
 var curjsonindex;
 
 function setCurFile(item, id, jsonindex) {
-    if (lastItem != null)
-        lastItem.className = 'list-group-item';
-    item.className = 'list-group-item active';
     curId = id;
-    lastItem = item;
     curjsonindex = jsonindex;
+
+    if (lastItem != null)
+        lastItem.className = lastItemClass;
+
+    lastItem = item;
+    lastItemClass = item.className;
+
+    item.className = 'list-group-item active';
 }
 
 function playAudio() {
