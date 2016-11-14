@@ -310,18 +310,16 @@ function setCurFile(item, id, jsonindex) {
 
     item.className = 'list-group-item active';
 
-    alert(jsonfiles.files[curjsonindex].title);
-    alert(jsonfiles.files[curjsonindex].title.indexOf('.doc'));
     if (jsonfiles.files[curjsonindex].title.indexOf('.doc') >= 0) {
         document.getElementById("btnPlay").style.visibility = 'hidden';
         document.getElementById("btnStop").style.visibility = 'hidden';
         document.getElementById("btnRecord").style.visibility = 'hidden';
-        document.getElementById("btnWord").style.visibility = 'visibile';
+        document.getElementById("btnWord").style.visibility = 'visible';
     }
     else {
-        document.getElementById("btnPlay").style.visibility = 'visibile';
-        document.getElementById("btnStop").style.visibility = 'visibile';
-        document.getElementById("btnRecord").style.visibility = 'visibile';
+        document.getElementById("btnPlay").style.visibility = 'visible';
+        document.getElementById("btnStop").style.visibility = 'visible';
+        document.getElementById("btnRecord").style.visibility = 'visible';
         document.getElementById("btnWord").style.visibility = 'hidden';
     }
 }
