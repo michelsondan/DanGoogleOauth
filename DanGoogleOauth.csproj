@@ -65,6 +65,8 @@
     <Content Include="www\bootstrap\js\bootstrap.js" />
     <Content Include="www\bootstrap\js\bootstrap.min.js" />
     <Content Include="www\bootstrap\js\npm.js" />
+    <Content Include="www\extAut.html" />
+    <Content Include="www\js\extAut.js" />
     <Content Include="www\testUpload.html" />
     <Content Include="Web.config" />
     <Content Include="www\config.xml">
@@ -106,6 +108,7 @@
     <Content Include="www\res\screen\ios\screen-iphone-portrait.png" />
     <Content Include="www\res\screen\windows-phone\screen-portrait.jpg" />
     <Content Include="www\test.html" />
+    <Content Include="www\token.asp" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
