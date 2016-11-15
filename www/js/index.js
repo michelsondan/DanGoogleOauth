@@ -453,10 +453,13 @@ function focusFolder(id) {
 
 var mainFolderId;
 
+alert('1');
 $("#folder1").click(function () {
     focusFolder('folder1');
     loadFolder('0BxOZ7Vr1rW6NWlFibXNhM0dZRW8');
 });
+
+alert('2');
 
 $("#folder2").click(function () {
     focusFolder('folder2');
