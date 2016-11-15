@@ -210,6 +210,7 @@ function uploadPhoto(imageURI) {
 }
 
 function getFileContentAsBase64(imageURI, callback) {
+    alert(imageURI);
     window.resolveLocalFileSystemURL(imageURI, gotFile, fail);
 
     function fail(e) {
