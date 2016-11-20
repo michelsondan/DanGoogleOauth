@@ -63,7 +63,7 @@
 };
 
 $(document).on('deviceready', function () {
-    document.getElementById('txtver').value = 'גיא לומדה 1.9.0';
+    document.getElementById('txtver').innerText = 'גיא לומדה 1.9.0';
 
     googleapi.authorize({
         client_id: '650577198335-t2e4l1fk8pg3pf7nbbitcr7keifnr5cf.apps.googleusercontent.com',
