@@ -63,25 +63,26 @@
 };
 
 $(document).on('deviceready', function () {
+    document.getElementById('txtver').value = 'גיא לומדה 1.9.0';
 
-    //googleapi.authorize({
-    //    client_id: '650577198335-t2e4l1fk8pg3pf7nbbitcr7keifnr5cf.apps.googleusercontent.com',
-    //    client_secret: '1N67xbR-wbKIXTogmWfvMb26',
-    //    redirect_uri: 'http://localhost',
-    //    scopes: ['https://www.googleapis.com/auth/drive', 'https://www.googleapis.com/auth/drive.file']
-    //}).done(function (data) {
+    googleapi.authorize({
+        client_id: '650577198335-t2e4l1fk8pg3pf7nbbitcr7keifnr5cf.apps.googleusercontent.com',
+        client_secret: '1N67xbR-wbKIXTogmWfvMb26',
+        redirect_uri: 'http://localhost',
+        scopes: ['https://www.googleapis.com/auth/drive', 'https://www.googleapis.com/auth/drive.file']
+    }).done(function (data) {
 
-    //}).fail(function (data) {
+    }).fail(function (data) {
 
-    //});
+    });
 });
 
 function driveloaded() {
-    gapi.auth.setToken({
-        access_token: 'ya29.Ci-XA9iJPD7PY75EbHDc76uwJCBtwQ-8E-jVX82v-nhTwnRn2xIUmtCKgcJrdeFdsA'
-    });
+    //gapi.auth.setToken({
+    //    access_token: 'ya29.Ci-XA9iJPD7PY75EbHDc76uwJCBtwQ-8E-jVX82v-nhTwnRn2xIUmtCKgcJrdeFdsA'
+    //});
 
-    gapi.client.load('drive', 'v2', onDriveClientLoaded);
+    //gapi.client.load('drive', 'v2', onDriveClientLoaded);
 }
 
 function onDriveClientLoaded(folderID) {
@@ -210,7 +211,8 @@ function uploadPhoto(imageURI) {
 }
 
 function getFileContentAsBase64(imageURI, callback) {
-    window.resolveLocalFileSystemURL('file://' + imageURI, gotFile, fail);
+    //window.resolveLocalFileSystemURL('file://' + imageURI, gotFile, fail);
+    window.resolveLocalFileSystemURL(imageURI, gotFile, fail);
 
     function fail(e) {
         alert('Cannot found requested file');
