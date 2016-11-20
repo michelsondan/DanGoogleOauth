@@ -1,4 +1,6 @@
-﻿var googleapi = {
+﻿var version = '1.9.1';
+
+var googleapi = {
     authorize: function (options) {
         var deferred = $.Deferred();
 
@@ -63,7 +65,7 @@
 };
 
 $(document).on('deviceready', function () {
-    document.getElementById('txtver').innerText = 'גיא לומדה 1.9.0';
+    document.getElementById('txtver').innerText = 'גיא לומדה ' + version;
 
     googleapi.authorize({
         client_id: '650577198335-t2e4l1fk8pg3pf7nbbitcr7keifnr5cf.apps.googleusercontent.com',
@@ -227,7 +229,7 @@ function getFileContentAsBase64(imageURI, callback) {
                 content = content.replace(/^data:image\/(png|jpg|jpeg);base64,/, ""); // !!!!!!!!!!!!!!!!!!!! !!! :-)
                 content = content.replace(/^data:audio\/(mpeg|mpg);base64,/, ""); // !!!!!!!!!!!!!!!!!!!! !!! :-)
                 content = content.replace(/^data:audio\/wav;base64,/, ""); // !!!!!!!!!!!!!!!!!!!! !!! :-)
-                alert(content);
+                //alert(content);
                 callback(content);
             };
             // The most important point, use the readAsDatURL Method from the file plugin
