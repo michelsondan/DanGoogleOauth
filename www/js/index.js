@@ -1,4 +1,4 @@
-﻿var version = '1.9.2';
+﻿var version = '1.9.3';
 
 var googleapi = {
     authorize: function (options) {
@@ -103,16 +103,14 @@ function loadFolder(folderID) {
     });
 
     request.execute(function (resp) {
-        alert('1');
         var files = resp.items;
-        alert(files.length);
         if (files && files.length > 0) {
 
             for (var i = 0; i < files.length; i++) {
                 var file = files[i];
 
                 if (!file.explicitlyTrashed) {
-                    //alert(file.title + ' (' + file.id + ') - ' + file.embedLink);
+                    alert(file.title + ' (' + file.id + ')');
                     if (file.fileExtension && (file.fileExtension == 'm4a' || file.fileExtension == 'mp3' || file.fileExtension == 'docx' || file.fileExtension == 'doc')) {
                         jsonfiles.files.push({ id: file.id, title: file.title, folderId: null, folderChecked: false, answers: [] });
                     }
