@@ -1,4 +1,4 @@
-﻿var version = '1.9.1';
+﻿var version = '1.9.2';
 
 var googleapi = {
     authorize: function (options) {
@@ -103,8 +103,11 @@ function loadFolder(folderID) {
     });
 
     request.execute(function (resp) {
+        alert('1');
         var files = resp.items;
+        alert(files.length);
         if (files && files.length > 0) {
+
             for (var i = 0; i < files.length; i++) {
                 var file = files[i];
 
