@@ -1,4 +1,4 @@
-﻿var version = '1.9.3';
+﻿var version = '1.9.4';
 
 var googleapi = {
     authorize: function (options) {
@@ -109,8 +109,7 @@ function loadFolder(folderID) {
             for (var i = 0; i < files.length; i++) {
                 var file = files[i];
 
-                if (!file.explicitlyTrashed) {
-                    alert(file.title + ' (' + file.id + ')');
+                if (!file.explicitlyTrashed) {                    
                     if (file.fileExtension && (file.fileExtension == 'm4a' || file.fileExtension == 'mp3' || file.fileExtension == 'docx' || file.fileExtension == 'doc')) {
                         jsonfiles.files.push({ id: file.id, title: file.title, folderId: null, folderChecked: false, answers: [] });
                     }
@@ -128,6 +127,7 @@ function loadFolder(folderID) {
                     }
                 }
             }
+            checkIfAllAnswersDone();
         } else {
             var mainPanel = document.getElementById('mainPanel');
             mainPanel.innerHTML = '<ul class="list-group"><li class="list-group-item">אין קבצים</li></ul>';
