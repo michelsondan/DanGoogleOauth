@@ -1,4 +1,4 @@
-﻿var version = '1.9.4';
+﻿var version = '1.9.5';
 
 var googleapi = {
     authorize: function (options) {
@@ -230,7 +230,7 @@ function getFileContentAsBase64(imageURI, callback) {
                 content = content.replace(/^data:image\/(png|jpg|jpeg);base64,/, ""); // !!!!!!!!!!!!!!!!!!!! !!! :-)
                 content = content.replace(/^data:audio\/(mpeg|mpg);base64,/, ""); // !!!!!!!!!!!!!!!!!!!! !!! :-)
                 content = content.replace(/^data:audio\/wav;base64,/, ""); // !!!!!!!!!!!!!!!!!!!! !!! :-)
-                //alert(content);
+                alert(content);
                 callback(content);
             };
             // The most important point, use the readAsDatURL Method from the file plugin
