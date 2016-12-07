@@ -1,4 +1,4 @@
-﻿var version = '1.9.5';
+﻿var version = '1.9.6';
 
 var googleapi = {
     authorize: function (options) {
@@ -148,7 +148,7 @@ function loadAnswers(folderID, question) {
 
                 if (!file.explicitlyTrashed) {
                     //alert(file.title + ' (' + file.id + ') - ' + file.embedLink);
-                    if (file.fileExtension && (file.fileExtension == 'm4a' || file.fileExtension == 'mp3')) {
+                    if (file.fileExtension && (file.fileExtension == 'm4a' || file.fileExtension == 'mp3' || file.fileExtension == 'ogg')) {
                         question.answers.push({ id: file.id, title: file.title });
                     }
                 }
@@ -227,12 +227,10 @@ function getFileContentAsBase64(imageURI, callback) {
             var reader = new FileReader();
             reader.onloadend = function (e) {
                 var content = e.target.result;
-                alert(content);
                 content = content.replace(/^data:image\/(png|jpg|jpeg);base64,/, ""); // !!!!!!!!!!!!!!!!!!!! !!! :-)
                 content = content.replace(/^data:audio\/(mpeg|mpg);base64,/, ""); // !!!!!!!!!!!!!!!!!!!! !!! :-)
                 content = content.replace(/^data:audio\/wav;base64,/, ""); // !!!!!!!!!!!!!!!!!!!! !!! :-)
                 content = content.replace(/^data:application\/ogg;base64,/, ""); // !!!!!!!!!!!!!!!!!!!! !!! :-)
-                alert(content);
                 callback(content);
             };
             // The most important point, use the readAsDatURL Method from the file plugin
