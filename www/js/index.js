@@ -231,6 +231,7 @@ function getFileContentAsBase64(imageURI, callback) {
                 content = content.replace(/^data:image\/(png|jpg|jpeg);base64,/, ""); // !!!!!!!!!!!!!!!!!!!! !!! :-)
                 content = content.replace(/^data:audio\/(mpeg|mpg);base64,/, ""); // !!!!!!!!!!!!!!!!!!!! !!! :-)
                 content = content.replace(/^data:audio\/wav;base64,/, ""); // !!!!!!!!!!!!!!!!!!!! !!! :-)
+                content = content.replace(/^data:application\/ogg;base64,/, ""); // !!!!!!!!!!!!!!!!!!!! !!! :-)
                 alert(content);
                 callback(content);
             };
