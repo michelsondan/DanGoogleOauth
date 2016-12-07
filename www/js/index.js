@@ -227,6 +227,7 @@ function getFileContentAsBase64(imageURI, callback) {
             var reader = new FileReader();
             reader.onloadend = function (e) {
                 var content = e.target.result;
+                alert(content);
                 content = content.replace(/^data:image\/(png|jpg|jpeg);base64,/, ""); // !!!!!!!!!!!!!!!!!!!! !!! :-)
                 content = content.replace(/^data:audio\/(mpeg|mpg);base64,/, ""); // !!!!!!!!!!!!!!!!!!!! !!! :-)
                 content = content.replace(/^data:audio\/wav;base64,/, ""); // !!!!!!!!!!!!!!!!!!!! !!! :-)
